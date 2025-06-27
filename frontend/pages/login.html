@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/login.css">
+    <title>Login</title>
+</head>
+<body>
+    <!-- Sesión de usuario -->
+	<div id="user-session" class="session-box" style="display: none;">
+		<span id="user-info"></span>
+		<button id="logout-btn">Cerrar sesión</button>
+	</div>
+
+	<!-- Sección de login -->
+	<div id="login-section">
+		<h2>Iniciar sesión</h2>
+		<form id="login-form">
+			<input type="text" id="login-username" placeholder="Usuario" required />
+			<input type="password" id="login-password" placeholder="Contraseña" required />
+			<button type="submit">Entrar</button>
+		</form>
+	</div>
+
+	<!-- Sección de registro -->
+	<section id="register-section">
+		<h2>Registro</h2>
+		<form id="register-form">
+			<input type="text" id="register-username" placeholder="Nombre de usuario" required />
+			<input type="password" id="register-password" placeholder="Contraseña" required />
+			<button type="submit">Registrarse</button>
+		</form>
+	</section>
+</body>
+</html>

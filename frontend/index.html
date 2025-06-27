@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Karla&family=Rubik&family=Ubuntu&display=swap"
+		rel="stylesheet">
+	<title>EcoMarket</title>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<div class="titulo">
+				<h1 class="nombre"><span>E</span>CO<span>M</span>ARKET</h1>
+				<div class="enlaces-1">
+					<a href="#">Inicio</a>
+					<a href="#">Categorias</a>
+					<a href="#">Publicar Producto</a>
+					<a href="#">Ofertas</a>
+				</div>
+			</div>
+			<div class="enlaces-2 enlaces-1">
+				<a href="#"><i class="fa-solid fa-circle-user"></i></a>
+				<a href="#"><i class="fa-solid fa-heart"></i></a>
+				<!-- Botón para ver carrito -->
+	<button onclick="mostrarCarrito()" class="carrito-btn">🛒 Ver carrito</button>
+
+	<!-- Modal del carrito -->
+	<div id="carrito-modal" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="cerrarCarrito()">&times;</span>
+			<h2>Carrito de compras</h2>
+			<div id="carrito-lista"></div>
+			<p><strong>Total:</strong> $<span id="carrito-total">0</span></p>
+			<div class="carrito-acciones">
+				<button onclick="vaciarCarrito()">Vaciar carrito</button>
+				<button onclick="realizarCompra()">Comprar</button>
+			</div>
+		</div>
+	</div>
+			</div>
+		</nav>
+	</header>
+	<section class="seccion-principal">
+		<div class="info">
+			<h1>TIENDA DE SEGUNDA MANO</h1>
+			<p>Encuentra ropa, tecnología, muebles, libros y más productos usados en buen estado a precios bajos.</p>
+			<button class="boton">Ver más</button>
+		</div>
+
+		<div class="producto">
+			<img src="asset/image/imagen-principal.png" alt="Audífonos" class="imagen-producto">
+		</div>
+	</section>
+	<section class="barra-recomendaciones">
+		<div class="saludo">
+			<img src="asset/image/persona.jpg" alt="Foto usuario">
+			<div class="texto-saludo">
+				<p>Hola, Daniel</p>
+				<span>Recomendaciones para ti 👋</span>
+			</div>
+		</div>
+
+		<div class="opcion">
+			<img src="asset/image/caja.png" alt="Caja">
+			<h4>Mis pedidos</h4>
+			<p>Ver historial</p>
+		</div>
+
+		<div class="opcion">
+			<img src="asset/image/ropa.png" alt="Ropa">
+			<h4>Ropa</h4>
+			<p>Ofertas hasta 40%</p>
+		</div>
+
+		<div class="opcion">
+			<img src="asset/image/audifonos.png" alt="Audífonos">
+			<h4>Electrónica</h4>
+			<p>Descuentos 30%</p>
+		</div>
+
+		<div class="opcion">
+			<img src="asset/image/hogar.png" alt="Hogar">
+			<h4>Hogar</h4>
+			<p>Desde $10.000</p>
+		</div>
+	</section>
+	<section class="categorias">
+		<h2>Categorías destacadas</h2>
+
+		<div class="contenedor-categorias">
+			<div class="categoria">
+				<img src="https://i.imgur.com/FvFtvhD.png" alt="Ropa">
+				<h4>Ropa</h4>
+			</div>
+			<div class="categoria">
+				<img src="https://i.imgur.com/6qkP8aU.png" alt="Computadores">
+				<h4>Computadores</h4>
+			</div>
+			<div class="categoria">
+				<img src="https://i.imgur.com/kI0gxvM.png" alt="Videojuegos">
+				<h4>Videojuegos</h4>
+			</div>
+			<div class="categoria">
+				<img src="https://i.imgur.com/Qv1gu9Z.png" alt="Juguetes">
+				<h4>Juguetes</h4>
+			</div>
+		</div>
+
+		<div class="ofertas">
+			<div class="tarjeta-oferta">
+				<h3>Ofertas básicas</h3>
+				<p>Encuentra productos diarios a precios bajos.</p>
+				<a href="#">Ver más</a>
+				<img src="https://i.imgur.com/TeDLe6S.png" alt="Control">
+			</div>
+
+			<div class="tarjeta-oferta">
+				<h3>Descuentos por tiempo limitado</h3>
+				<p>Aprovecha los mejores precios de la semana.</p>
+				<a href="#">Ver más</a>
+				<img src="https://i.imgur.com/qYzXvLv.png" alt="Caja">
+			</div>
+		</div>
+	</section>
+	<section class="envios seccion-principal">
+		<div class="info">
+			<h1>TIENDA DE SEGUNDA MANO</h1>
+			<p>Encuentra ropa, tecnología, muebles, libros y más productos usados en buen estado a precios bajos.</p>
+			<button class="boton">Ver más</button>
+		</div>
+
+		<div class="producto">
+			<img src="asset/image/imagen-principal.png" alt="Audífonos" class="imagen-producto">
+		</div>
+	</section>
+	<section class="productos-destacados">
+		<h2>Lo más visto</h2>
+		<div class="grid-productos">
+
+			<div class="producto">
+				<img src="https://i.imgur.com/ZbMH8Jm.png" alt="Zapatos">
+				<p class="marca">Zapatillas Puma</p>
+				<p class="detalles">Calzado usado - 342 reseñas</p>
+				<p class="precio">$150.000</p>
+			</div>
+
+			<div class="producto">
+				<img src="https://i.imgur.com/GXGmXYx.png" alt="TV usada">
+				<p class="marca">Televisor 24'' Skyworth</p>
+				<p class="detalles">Pantalla usada - 192 reseñas</p>
+				<p class="precio">$129.000</p>
+			</div>
+
+			<div class="producto">
+				<img src="https://i.imgur.com/iyz5XEm.png" alt="Olla eléctrica">
+				<p class="marca">Olla eléctrica usada</p>
+				<p class="detalles">Buen estado - 300 reseñas</p>
+				<p class="precio">$79.000</p>
+			</div>
+
+			<div class="producto">
+				<img src="https://i.imgur.com/fvnYETj.png" alt="Secador">
+				<p class="marca">Secador Philips</p>
+				<p class="detalles">Funciona perfecto - 500 reseñas</p>
+				<p class="precio">$24.000</p>
+			</div>
+
+		</div>
+	</section>
+	<section class="productos-destacados">
+		<div class="grid-productos">
+
+			<div class="producto">
+				<img src="https://i.imgur.com/ZbMH8Jm.png" alt="Zapatos">
+				<p class="marca">Zapatillas Puma</p>
+				<p class="detalles">Calzado usado - 342 reseñas</p>
+				<p class="precio">$150.000</p>
+			</div>
+
+			<div class="producto">
+				<img src="https://i.imgur.com/GXGmXYx.png" alt="TV usada">
+				<p class="marca">Televisor 24'' Skyworth</p>
+				<p class="detalles">Pantalla usada - 192 reseñas</p>
+				<p class="precio">$129.000</p>
+			</div>
+
+			<div class="producto">
+				<img src="https://i.imgur.com/iyz5XEm.png" alt="Olla eléctrica">
+				<p class="marca">Olla eléctrica usada</p>
+				<p class="detalles">Buen estado - 300 reseñas</p>
+				<p class="precio">$79.000</p>
+			</div>
+
+			<div class="producto">
+				<img src="https://i.imgur.com/fvnYETj.png" alt="Secador">
+				<p class="marca">Secador Philips</p>
+				<p class="detalles">Funciona perfecto - 500 reseñas</p>
+				<p class="precio">$24.000</p>
+			</div>
+
+		</div>
+	</section>
+	<section class="moda-genero">
+		<div class="tarjeta-genero">
+			<div class="texto-genero">
+				<h2>Estilo cómodo para ella</h2>
+				<p>Ropa, bolsos, zapatos y más en excelente estado.</p>
+				<a href="#">Ver más →</a>
+				<div class="categoria-genero">
+					<img src="https://i.imgur.com/v6uLGGK.png" alt="Bolso">
+					<div>
+						<h4>Bolsos de moda</h4>
+						<p>Descuento 30%</p>
+					</div>
+				</div>
+			</div>
+			<img src="https://i.imgur.com/WIPFuRk.png" alt="Mujer" class="foto-genero">
+		</div>
+
+		<div class="tarjeta-genero">
+			<div class="texto-genero">
+				<h2>Estilo cómodo para él</h2>
+				<p>Camisas, zapatos, relojes y más en buen estado.</p>
+				<a href="#">Ver más →</a>
+				<div class="categoria-genero">
+					<img src="https://i.imgur.com/Yk8nTYu.png" alt="Camisa">
+					<div>
+						<h4>Camisas a cuadros</h4>
+						<p>Descuento 30%</p>
+					</div>
+				</div>
+			</div>
+			<img src="https://i.imgur.com/bxvjK0G.png" alt="Hombre" class="foto-genero">
+		</div>
+	</section>
+	<section class="productos-destacados">
+		<h2>Lo más visto</h2>
+		<div class="grid-productos">
+
+			<div class="producto">
+				<img src="https://i.imgur.com/ZbMH8Jm.png" alt="Zapatos">
+				<p class="marca">Zapatillas Puma</p>
+				<p class="detalles">Calzado usado - 342 reseñas</p>
+				<p class="precio">$150.000</p>
+			</div>
+
+			<div class="producto">
+				<img src="https://i.imgur.com/GXGmXYx.png" alt="TV usada">
+				<p class="marca">Televisor 24'' Skyworth</p>
+				<p class="detalles">Pantalla usada - 192 reseñas</p>
+				<p class="precio">$129.000</p>
+			</div>
+
+			<div class="producto">
+				<img src="https://i.imgur.com/iyz5XEm.png" alt="Olla eléctrica">
+				<p class="marca">Olla eléctrica usada</p>
+				<p class="detalles">Buen estado - 300 reseñas</p>
+				<p class="precio">$79.000</p>
+			</div>
+
+			<div class="producto">
+				<img src="https://i.imgur.com/fvnYETj.png" alt="Secador">
+				<p class="marca">Secador Philips</p>
+				<p class="detalles">Funciona perfecto - 500 reseñas</p>
+				<p class="precio">$24.000</p>
+			</div>
+
+		</div>
+	</section>
+	<section class="barra-recomendaciones">
+		<div class="saludo">
+			<img src="asset/image/persona.jpg" alt="Foto usuario">
+			<div class="texto-saludo">
+				<p>Hola, Daniel</p>
+				<span>Recomendaciones para ti 👋</span>
+			</div>
+		</div>
+
+		<div class="opcion">
+			<img src="asset/image/caja.png" alt="Caja">
+			<h4>Mis pedidos</h4>
+			<p>Ver historial</p>
+		</div>
+
+		<div class="opcion">
+			<img src="asset/image/ropa.png" alt="Ropa">
+			<h4>Ropa</h4>
+			<p>Ofertas hasta 40%</p>
+		</div>
+
+		<div class="opcion">
+			<img src="asset/image/audifonos.png" alt="Audífonos">
+			<h4>Electrónica</h4>
+			<p>Descuentos 30%</p>
+		</div>
+
+		<div class="opcion">
+			<img src="asset/image/hogar.png" alt="Hogar">
+			<h4>Hogar</h4>
+			<p>Desde $10.000</p>
+		</div>
+	</section>
+	<section class="seccion-principal">
+		<div class="info">
+			<h1>TIENDA DE SEGUNDA MANO</h1>
+			<p>Encuentra ropa, tecnología, muebles, libros y más productos usados en buen estado a precios bajos.</p>
+			<button class="boton">Ver más</button>
+		</div>
+
+		<div class="producto">
+			<img src="asset/image/imagen-principal.png" alt="Audífonos" class="imagen-producto">
+		</div>
+	</section>
+	<footer class="pie">
+		<div class="contenedor-footer">
+			<div class="columna">
+				<h4>Conócenos</h4>
+				<ul>
+					<li><a href="#">Nuestra historia</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Equipo</a></li>
+					<li><a href="#">Contacto</a></li>
+				</ul>
+			</div>
+
+			<div class="columna">
+				<h4>Gana dinero</h4>
+				<ul>
+					<li><a href="#">Vende con nosotros</a></li>
+					<li><a href="#">Afíliate</a></li>
+					<li><a href="#">Publica productos</a></li>
+				</ul>
+			</div>
+
+			<div class="columna">
+				<h4>Ayuda</h4>
+				<ul>
+					<li><a href="#">Mi cuenta</a></li>
+					<li><a href="#">Pedidos</a></li>
+					<li><a href="#">Envíos y devoluciones</a></li>
+					<li><a href="#">Soporte</a></li>
+				</ul>
+			</div>
+
+			<div class="columna">
+				<h4>Pagos</h4>
+				<ul>
+					<li><a href="#">Métodos de pago</a></li>
+					<li><a href="#">Recargar saldo</a></li>
+					<li><a href="#">Cupones</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="pie-inferior">
+			<p>© 2025 SegundaMano. Todos los derechos reservados.</p>
+			<div class="enlaces-legales">
+				<a href="#">Términos de uso</a>
+				<a href="#">Privacidad</a>
+				<a href="#">Cookies</a>
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>
