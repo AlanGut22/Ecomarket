@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+<!-- Cabecera -->
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- link -->
 	<link rel="stylesheet" href="style/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<link href="https://fonts.googleapis.com/css2?family=Karla&family=Rubik&family=Ubuntu&display=swap"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Karla&family=Rubik&family=Ubuntu&display=swap"rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 	<title>EcoMarket</title>
 </head>
+<!-- Cuerpo -->
 
 <body>
 	<header>
+		<!-- navegador -->
 		<nav>
 			<div class="titulo">
-				<h1 class="nombre"><span>E</span>CO<span>M</span>ARKET</h1>
+				<h1 class="nombre">RE<span>LOOP</span></h1>
 				<div class="enlaces-1">
 					<a href="#">Inicio</a>
 					<a href="#">Categorias</a>
@@ -27,65 +31,62 @@
 				<a href="#"><i class="fa-solid fa-circle-user"></i></a>
 				<a href="#"><i class="fa-solid fa-heart"></i></a>
 				<!-- Botón para ver carrito -->
-	<button onclick="mostrarCarrito()" class="carrito-btn">🛒 Ver carrito</button>
+				<button onclick="mostrarCarrito()" class="carrito-btn"><i
+						class="fa-solid fa-cart-shopping"></i></button>
 
-	<!-- Modal del carrito -->
-	<div id="carrito-modal" class="modal">
-		<div class="modal-content">
-			<span class="close" onclick="cerrarCarrito()">&times;</span>
-			<h2>Carrito de compras</h2>
-			<div id="carrito-lista"></div>
-			<p><strong>Total:</strong> $<span id="carrito-total">0</span></p>
-			<div class="carrito-acciones">
-				<button onclick="vaciarCarrito()">Vaciar carrito</button>
-				<button onclick="realizarCompra()">Comprar</button>
-			</div>
-		</div>
-	</div>
+				<!-- Modal del carrito -->
+				<div id="carrito-modal" class="modal">
+					<div class="modal-content">
+						<span class="close" onclick="cerrarCarrito()">&times;</span>
+						<h2>Carrito de compras</h2>
+						<div id="carrito-lista"></div>
+						<p><strong>Total:</strong> $<span id="carrito-total">0</span></p>
+						<div class="carrito-acciones">
+							<button onclick="vaciarCarrito()">Vaciar carrito</button>
+							<button onclick="realizarCompra()">Comprar</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</nav>
 	</header>
 	<section class="seccion-principal">
 		<div class="info">
-			<h1>TIENDA DE SEGUNDA MANO</h1>
-			<p>Encuentra ropa, tecnología, muebles, libros y más productos usados en buen estado a precios bajos.</p>
-			<button class="boton">Ver más</button>
+			<h2 class="tiseccprin">RE<span>LOOP</span></h2>
+			<h3 class="eslogan">Tu estilo, tu segunda vuelta</h3>
+			<p class="descripcion">Encuentra moda, tecnología, muebles y más — productos únicos con historia y estilo.</p>
+
+			<button class="boton">Explorar ahora</button>
 		</div>
 
-		<div class="producto">
-			<img src="asset/image/imagen-principal.png" alt="Audífonos" class="imagen-producto">
+		<div class="img-seccion-1">
+			<img src="asset/image/imgseccionprin.png" alt="Audífonos" class="imagen-producto">
 		</div>
 	</section>
 	<section class="barra-recomendaciones">
-		<div class="saludo">
-			<img src="asset/image/persona.jpg" alt="Foto usuario">
-			<div class="texto-saludo">
-				<p>Hola, Daniel</p>
-				<span>Recomendaciones para ti 👋</span>
-			</div>
-		</div>
+
 
 		<div class="opcion">
 			<img src="asset/image/caja.png" alt="Caja">
-			<h4>Mis pedidos</h4>
+			<h4>Tendencia</h4>
 			<p>Ver historial</p>
 		</div>
 
 		<div class="opcion">
 			<img src="asset/image/ropa.png" alt="Ropa">
-			<h4>Ropa</h4>
+			<h4>Casi Nuevos</h4>
 			<p>Ofertas hasta 40%</p>
 		</div>
 
 		<div class="opcion">
 			<img src="asset/image/audifonos.png" alt="Audífonos">
-			<h4>Electrónica</h4>
+			<h4>Joyas</h4>
 			<p>Descuentos 30%</p>
 		</div>
 
 		<div class="opcion">
 			<img src="asset/image/hogar.png" alt="Hogar">
-			<h4>Hogar</h4>
+			<h4>Ofertas</h4>
 			<p>Desde $10.000</p>
 		</div>
 	</section>
@@ -129,13 +130,13 @@
 	</section>
 	<section class="envios seccion-principal">
 		<div class="info">
-			<h1>TIENDA DE SEGUNDA MANO</h1>
-			<p>Encuentra ropa, tecnología, muebles, libros y más productos usados en buen estado a precios bajos.</p>
-			<button class="boton">Ver más</button>
+			<h1 class="tiseccprin1">DALE UNA NUEVA VIDA A LO QUE NO USUAS</h1>
+			<p class="descripcion">Vende de manera sencilla y permite que otra persona reutilize tus articulos</p>
+			<button class="boton">Quiero vender</button>
 		</div>
 
-		<div class="producto">
-			<img src="asset/image/imagen-principal.png" alt="Audífonos" class="imagen-producto">
+		<div class="img-seccion-4">
+			<img src="asset/image/imgseccion-4.png" alt="Audífonos" class="imagen-producto1">
 		</div>
 	</section>
 	<section class="productos-destacados">
