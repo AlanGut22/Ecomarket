@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categorías - RELOOP</title>
+  <link rel="stylesheet" href="../style/categoria .css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap"
+		rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <!-- navegador -->
+    <nav>
+      <div class="navegador">
+        <h1 class="nombreweb">RE<span>LOOP</span></h1>
+        <div class="enlaces-1">
+          <a href="../index.html">Inicio</a>
+          <a href="categoria.html">Categorias</a>
+          <a href="publicar.html">Publicar Producto</a>
+          <a href="ofertas.html">Ofertas</a>
+        </div>
+      </div>
+      <div class="enlaces-2 enlaces-1">
+        <a href="perfil.html"><i class="fa-solid fa-circle-user"></i></a>
+        <a href="favoritos.html"><i class="fa-solid fa-heart"></i></a>
+
+        <!-- Botón para ver carrito -->
+        <button onclick="mostrarCarrito()" class="carrito-btn"><i class="fa-solid fa-bag-shopping"></i></button>
+
+        <!-- Modal del carrito -->
+        <div id="carrito-modal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="cerrarCarrito()">&times;</span>
+            <h2>Bolsa de compras</h2>
+            <div id="carrito-lista"></div>
+            <p><strong>Total:</strong> $<span id="carrito-total">0</span></p>
+            <div class="carrito-acciones">
+              <button onclick="vaciarCarrito()">Vaciar carrito</button>
+              <button onclick="realizarCompra()">Comprar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <section class="categorias-contenedor">
+    <h2>Categorías</h2>
+    <p class="descripcion">Explora productos únicos en cada categoría</p>
+    <div class="categorias-grid">
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/892/892458.png" alt="Ropa">
+        <span>Ropa y Accesorios</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2301/2301121.png" alt="Tecnología">
+        <span>Tecnología</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Muebles">
+        <span>Muebles</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2870/2870321.png" alt="Juguetes">
+        <span>Juguetes</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3460/3460427.png" alt="Libros">
+        <span>Libros</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3209/3209984.png" alt="Deporte">
+        <span>Deporte</span>
+      </div>
+    </div>
+  </section>
+  <section class="categorias-contenedor">
+    <div class="categorias-grid">
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/892/892458.png" alt="Ropa">
+        <span>Ropa y Accesorios</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2301/2301121.png" alt="Tecnología">
+        <span>Tecnología</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Muebles">
+        <span>Muebles</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2870/2870321.png" alt="Juguetes">
+        <span>Juguetes</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3460/3460427.png" alt="Libros">
+        <span>Libros</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3209/3209984.png" alt="Deporte">
+        <span>Deporte</span>
+      </div>
+    </div>
+  </section>
+  <section class="categorias-contenedor">
+
+    <div class="categorias-grid">
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/892/892458.png" alt="Ropa">
+        <span>Ropa y Accesorios</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2301/2301121.png" alt="Tecnología">
+        <span>Tecnología</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Muebles">
+        <span>Muebles</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2870/2870321.png" alt="Juguetes">
+        <span>Juguetes</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3460/3460427.png" alt="Libros">
+        <span>Libros</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3209/3209984.png" alt="Deporte">
+        <span>Deporte</span>
+      </div>
+    </div>
+  </section>
+  <section class="categorias-contenedor">
+    <div class="categorias-grid">
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/892/892458.png" alt="Ropa">
+        <span>Ropa y Accesorios</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2301/2301121.png" alt="Tecnología">
+        <span>Tecnología</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Muebles">
+        <span>Muebles</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2870/2870321.png" alt="Juguetes">
+        <span>Juguetes</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3460/3460427.png" alt="Libros">
+        <span>Libros</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3209/3209984.png" alt="Deporte">
+        <span>Deporte</span>
+      </div>
+    </div>
+  </section>
+  <section class="categorias-contenedor">
+    <div class="categorias-grid">
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/892/892458.png" alt="Ropa">
+        <span>Ropa y Accesorios</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2301/2301121.png" alt="Tecnología">
+        <span>Tecnología</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Muebles">
+        <span>Muebles</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2870/2870321.png" alt="Juguetes">
+        <span>Juguetes</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3460/3460427.png" alt="Libros">
+        <span>Libros</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3209/3209984.png" alt="Deporte">
+        <span>Deporte</span>
+      </div>
+    </div>
+  </section>
+  <section class="categorias-contenedor">
+    <div class="categorias-grid">
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/892/892458.png" alt="Ropa">
+        <span>Ropa y Accesorios</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2301/2301121.png" alt="Tecnología">
+        <span>Tecnología</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Muebles">
+        <span>Muebles</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2870/2870321.png" alt="Juguetes">
+        <span>Juguetes</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3460/3460427.png" alt="Libros">
+        <span>Libros</span>
+      </div>
+      <div class="categoria-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3209/3209984.png" alt="Deporte">
+        <span>Deporte</span>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

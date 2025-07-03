@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Publicar Producto - RELOOP</title>
+  <link rel="stylesheet" href="../style/publicar.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <section class="formulario-publicacion">
+    <h2>Publica tu producto</h2>
+    <p class="descripcion">Comparte ese artículo que merece una segunda vuelta</p>
+
+    <form class="formulario">
+      <div class="campo">
+        <label for="titulo">Título del producto</label>
+        <input type="text" id="titulo" placeholder="Ej. Chaqueta de cuero vintage" required>
+      </div>
+
+      <div class="campo">
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" rows="4" placeholder="Describe el estado, uso y características del producto" required></textarea>
+      </div>
+
+      <div class="campo">
+        <label for="precio">Precio</label>
+        <input type="number" id="precio" placeholder="Ej. 45000" required>
+      </div>
+
+      <div class="campo">
+        <label for="categoria">Categoría</label>
+        <select id="categoria" required>
+          <option value="">Selecciona una categoría</option>
+          <option>Ropa y Accesorios</option>
+          <option>Tecnología</option>
+          <option>Muebles</option>
+          <option>Juguetes</option>
+          <option>Libros</option>
+          <option>Deporte</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="imagen">Imagen del producto</label>
+        <input type="file" id="imagen" accept="image/*" required>
+      </div>
+
+      <button type="submit">Publicar producto</button>
+    </form>
+  </section>
+</body>
+</html>
