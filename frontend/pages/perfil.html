@@ -1,88 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mi perfil - RELOOP</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil Reloop</title>
   <link rel="stylesheet" href="../style/perfil.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <section class="perfil-contenedor">
+  <header>
+    <nav>
+      <div class="navegador">
+        <h1 class="nombreweb">RE<span>LOOP</span></h1>
+        <div class="enlaces-1">
+          <a href="../index.html">Inicio</a>
+          <a href="categoria.html">Categorías</a>
+          <a href="#">Ofertas</a>
+        </div>
+      </div>
+      <div class="enlaces-2 enlaces-1">
+        <button onclick="mostrarPerfil()" class="perfil-btn">
+          <i class="fa-solid fa-user"></i>
+        </button>
+        <button onclick="mostrarFavoritos()" class="favoritos-btn">
+          <i class="fa-solid fa-heart"></i>
+        </button>
+        <button onclick="mostrarCarrito()" class="carrito-btn">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="perfil">
     <div class="perfil-card">
-      <div class="foto-usuario">
-        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="Foto de perfil" />
-      </div>
-      <div class="info-usuario">
+      <div class="banner"></div>
+      <div class="perfil-info">
+        <img src="img/perfil.jpg" alt="Foto del usuario" class="avatar">
         <h2>Sara Barrera</h2>
-        <p class="email">sara@email.com</p>
-
-        <div class="datos">
-          <div class="dato">
-            <span class="valor">12</span>
-            <span class="etiqueta">Publicados</span>
-          </div>
-          <div class="dato">
-            <span class="valor">5</span>
-            <span class="etiqueta">Favoritos</span>
-          </div>
-          <div class="dato">
-            <span class="valor">3</span>
-            <span class="etiqueta">Vendidos</span>
-          </div>
-        </div>
-
+        <p>Compradora y Vendedora activa</p>
+        <p>Bogotá, Colombia</p>
         <div class="acciones">
-          <button class="btn-editar">Editar perfil</button>
-          <button class="btn-cerrar">Cerrar sesión</button>
+          <button>Editar perfil</button>
+          <button class="settings">Configuración</button>
         </div>
-      </div>
-    </div>
-  </section>
-   <section class="mis-productos-contenedor">
-    <h2>Mis productos publicados</h2>
-    <p class="descripcion">Gestiona tus productos fácilmente</p>
-
-    <div class="productos-grid">
-      <!-- Producto 1 -->
-      <div class="producto-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/892/892458.png" alt="Producto">
-        <div class="info">
-          <h3>Chaqueta Retro</h3>
-          <p class="precio">$49.000</p>
-          <div class="acciones">
-            <button class="editar">Editar</button>
-            <button class="eliminar">Eliminar</button>
+        <div class="etiquetas">
+          <span>Moda</span>
+          <span>Tecnología</span>
+          <span>Vintage</span>
+          <span>Hogar</span>
+        </div>
+        <div class="estado">
+          <div>
+            <h4>Publicaciones</h4>
+            <p>23</p>
           </div>
-        </div>
-      </div>
-
-      <!-- Producto 2 -->
-      <div class="producto-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/2301/2301121.png" alt="Producto">
-        <div class="info">
-          <h3>Auriculares Bluetooth</h3>
-          <p class="precio">$85.000</p>
-          <div class="acciones">
-            <button class="editar">Editar</button>
-            <button class="eliminar">Eliminar</button>
+          <div>
+            <h4>Favoritos</h4>
+            <p>12</p>
           </div>
-        </div>
-      </div>
-
-      <!-- Producto 3 -->
-      <div class="producto-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Producto">
-        <div class="info">
-          <h3>Lámpara Vintage</h3>
-          <p class="precio">$35.000</p>
-          <div class="acciones">
-            <button class="editar">Editar</button>
-            <button class="eliminar">Eliminar</button>
+          <div>
+            <h4>Vendidos</h4>
+            <p>8</p>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </main>
+
+  <script src="perfil.js"></script>
 </body>
 </html>

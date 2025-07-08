@@ -1,186 +1,223 @@
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f8f8f8;
-  margin: 0;
-  padding: 0;
-  color: #1e1e1e;
+/* ================= VARIABLES ================= */
+:root {
+  --fondo: #F9FAFB;
+  --titulo-1: #D44A63;
+  --titulo-2: #C0C916;
+  --enlaces: #1e1e1ea9;
+  --seccionprincipal: #1E1E1E;
+  --seccioncuatro: linear-gradient(135deg, #0F1115, #1D1B2A);
+  --textoprincipal: #FFFFFF;
+  --textosecundario: #CCCCCC;
+  --secciones: #eeeeee;
 }
 
-.perfil-contenedor {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 0 20px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--fondo);
+  color: var(--seccionprincipal);
+}
+
+/* ============ NAVEGADOR ============ */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  background-color: var(--fondo);
+}
+
+.navegador {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.nombreweb {
+  color: var(--titulo-1);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.nombreweb span {
+  color: var(--titulo-2);
+}
+
+.enlaces-1 {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.enlaces-1 a {
+  text-decoration: none;
+  color: var(--seccionprincipal);
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.enlaces-1 a:hover {
+  color: var(--enlaces);
+}
+
+.perfil-btn,
+.favoritos-btn,
+.carrito-btn {
+  background: none;
+  border: none;
+  color: var(--seccionprincipal);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.perfil-btn:hover,
+.favoritos-btn:hover,
+.carrito-btn:hover {
+  color: var(--titulo-1);
+}
+
+/* ============ PERFIL CARD ============ */
+.perfil {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  padding: 20px;
 }
 
 .perfil-card {
+  width: 100%;
+  max-width: 900px;
   background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  padding: 30px 20px;
-  text-align: center;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-.foto-usuario img {
+.banner {
+  height: 120px;
+  background: linear-gradient(to right, var(--titulo-1), var(--titulo-2));
+}
+
+.perfil-info {
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.avatar {
   width: 100px;
   height: 100px;
-  border-radius: 100px;
-  margin-bottom: 15px;
+  border-radius: 50%;
+  border: 4px solid #fff;
   object-fit: cover;
-  border: 3px solid #c0c916;
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.info-usuario h2 {
-  font-size: 1.8rem;
-  margin-bottom: 5px;
-  color: #d44a63;
+.perfil-info h2 {
+  margin-top: 60px;
+  color: var(--seccionprincipal);
 }
 
-.email {
-  color: #666;
-  font-size: 0.95rem;
-  margin-bottom: 25px;
-}
-
-.datos {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 25px;
-}
-
-.dato .valor {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #1e1e1e;
-}
-
-.dato .etiqueta {
-  font-size: 0.85rem;
-  color: #777;
-}
-
-.acciones button {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 12px;
-  margin: 5px;
-  font-weight: bold;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-editar {
-  background-color: #c0c916;
-  color: #000;
-}
-
-.btn-editar:hover {
-  background-color: #b4bb12;
-}
-
-.btn-cerrar {
-  background-color: #d44a63;
-  color: #fff;
-}
-
-.btn-cerrar:hover {
-  background-color: #bb3a54;
-}
-.mis-productos-contenedor {
-  max-width: 1100px;
-  margin: 50px auto;
-  padding: 0 20px;
-}
-
-.mis-productos-contenedor h2 {
-  color: #d44a63;
-  font-size: 2rem;
-  margin-bottom: 0.3em;
-  text-align: center;
-}
-
-.descripcion {
-  text-align: center;
-  color: #666;
-  margin-bottom: 40px;
-}
-
-.productos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
-}
-
-.producto-card {
-  background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease;
-}
-
-.producto-card:hover {
-  transform: translateY(-5px);
-}
-
-.producto-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.info {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.info h3 {
-  font-size: 1.1rem;
-  color: #333;
-  margin: 0;
-}
-
-.precio {
-  font-weight: bold;
-  color: #c0c916;
+.perfil-info p {
+  color: var(--enlaces);
+  margin: 4px 0;
 }
 
 .acciones {
-  margin-top: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 10px;
+  margin-top: 15px;
 }
 
 .acciones button {
-  flex: 1;
-  padding: 10px;
-  font-weight: bold;
+  padding: 8px 20px;
   border: none;
   border-radius: 10px;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: background 0.2s ease;
+  transition: all 0.3s ease;
 }
 
-.editar {
-  background-color: #c0c916;
-  color: #000;
+.acciones button:first-child {
+  background-color: var(--titulo-1);
+  color: white;
 }
 
-.editar:hover {
-  background-color: #b4bb12;
+.acciones button.settings {
+  border: 2px solid var(--titulo-1);
+  background-color: transparent;
+  color: var(--titulo-1);
 }
 
-.eliminar {
-  background-color: #d44a63;
-  color: #fff;
+.etiquetas {
+  margin: 20px 0 10px;
 }
 
-.eliminar:hover {
-  background-color: #bb3a54;
+.etiquetas span {
+  background-color: var(--secciones);
+  color: var(--seccionprincipal);
+  padding: 6px 12px;
+  margin: 4px;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 14px;
 }
+
+.estado {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.estado div h4 {
+  font-size: 16px;
+  color: var(--seccionprincipal);
+  margin-bottom: 5px;
+}
+
+.estado div p {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--titulo-1);
+}
+
+/* ============ RESPONSIVE ============ */
+@media screen and (max-width: 768px) {
+  .navegador {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .perfil-card {
+    margin: 20px;
+  }
+
+  .acciones {
+    flex-direction: column;
+  }
+
+  .estado {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+    top: -40px;
+  }
+
+  .perfil-info h2 {
+    margin-top: 50px;
+  }
+}
+

@@ -1,36 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/login.css">
-    <title>Login</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../style/login.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap"
+		rel="stylesheet">
+	<title>Reloop - Iniciar sesión / Registro</title>
 </head>
+
 <body>
-    <!-- Sesión de usuario -->
-	<div id="user-session" class="session-box" style="display: none;">
-		<span id="user-info"></span>
-		<button id="logout-btn">Cerrar sesión</button>
-	</div>
+	<header>
+		<!-- navegador -->
+		<nav>
+			<div class="navegador">
+				<h1 class="nombreweb">RE<span>LOOP</span></h1>
+				<div class="enlaces-1">
+					<a href="../index.html">Inicio</a>
+					<a href="categoria.html">Categorias</a>
+					<a href="ofertas.html">Ofertas</a>
+					<a href="vender.html">Vender</a>
+				</div>
+			</div>
+			<div class="enlaces-2 enlaces-1">
+				<a href="#"><i class="fa-solid fa-circle-user"></i></a>
+				<a href="#"><i class="fa-solid fa-heart"></i></a>
 
-	<!-- Sección de login -->
-	<div id="login-section">
-		<h2>Iniciar sesión</h2>
-		<form id="login-form">
-			<input type="text" id="login-username" placeholder="Usuario" required />
-			<input type="password" id="login-password" placeholder="Contraseña" required />
-			<button type="submit">Entrar</button>
-		</form>
-	</div>
+				<!-- Botón para ver carrito -->
+				<button onclick="mostrarCarrito()" class="carrito-btn">
+					<i class="fa-solid fa-cart-shopping"></i>
+				</button>
 
-	<!-- Sección de registro -->
-	<section id="register-section">
-		<h2>Registro</h2>
-		<form id="register-form">
-			<input type="text" id="register-username" placeholder="Nombre de usuario" required />
-			<input type="password" id="register-password" placeholder="Contraseña" required />
-			<button type="submit">Registrarse</button>
-		</form>
+				<!-- Modal del carrito -->
+				<div id="carrito-modal" class="modal">
+					<div class="modal-content">
+						<span class="close" onclick="cerrarCarrito()">&times;</span>
+						<h2>Carrito de compras</h2>
+						<div id="carrito-lista"></div>
+						<p><strong>Total:</strong> $<span id="carrito-total">0</span></p>
+						<div class="carrito-acciones">
+							<button onclick="vaciarCarrito()">Vaciar carrito</button>
+							<button onclick="realizarCompra()">Comprar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<section class="formulariouno">
+		<div class="contenedor" id="contenedor">
+			<!-- Formulario de inicio -->
+			<div class="formulario login">
+				<div class="contenido">
+					<h1 class="logo">RE<span>LOOP</span></h1>
+					<h2>¡Bienvenido de nuevo!</h2>
+					<form>
+						<input type="text" placeholder="Correo electrónico" required />
+						<input type="password" placeholder="Contraseña" required />
+						<button type="submit">Iniciar sesión</button>
+					</form>
+					<p>¿No tienes una cuenta? <a onclick="mostrarRegistro()">Regístrate</a></p>
+				</div>
+				<div class="imagen login-img"></div>
+			</div>
+
+			<!-- Formulario de registro -->
+			<div class="formulario registro">
+				<div class="contenido">
+					<h1 class="logo">RE<span>LOOP</span></h1>
+					<h2>Crea tu cuenta</h2>
+					<form>
+						<input type="text" placeholder="Nombre completo" required />
+						<input type="email" placeholder="Correo electrónico" required />
+						<input type="password" placeholder="Contraseña" required />
+						<button type="submit">Registrarse</button>
+					</form>
+					<p>¿Ya tienes una cuenta? <a onclick="mostrarLogin()">Inicia sesión</a></p>
+				</div>
+				<div class="imagen registro-img"></div>
+			</div>
+		</div>
 	</section>
+
+	<script src="../script.js"></script>
 </body>
+
 </html>

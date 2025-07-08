@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- Cabecera -->
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- link -->
 	<link rel="stylesheet" href="style/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 	<title>RELOOP</title>
 </head>
-<!-- Cuerpo -->
-
 <body>
 	<header>
-		<!-- navegador -->
 		<nav>
-			<div class="navegador">
-				<h1 class="nombreweb">RE<span>LOOP</span></h1>
-				<div class="enlaces-1">
+			<div class="nav-container">
+				<h1 class="brand-name">RE<span>LOOP</span></h1>
+				<div class="nav-links">
 					<a href="index.html">Inicio</a>
-					<a href="pages/categoria.html">Categorias</a>
-					<a href="#">Ofertas</a>
+					<a href="pages/categoria.html">Categorías</a>
+					<a href="pages/ofertas.html">Ofertas</a>
+					<a href="pages/vender.html">Vender</a>
 				</div>
 			</div>
-			<div class="enlaces-2 enlaces-1">
-				<a href="#"><i class="fa-solid fa-circle-user"></i></a>
-				<a href="#"><i class="fa-solid fa-heart"></i></a>
-
-				<!-- Botón para ver carrito -->
-				<button onclick="mostrarCarrito()" class="carrito-btn">
-					<i class="fa-solid fa-cart-shopping"></i>
-				</button>
-
-				<!-- Modal del carrito -->
+			<div class="user-actions nav-links">
+				<button onclick="mostrarPerfil()"><i class="fa-solid fa-user"></i></button>
+				<div id="perfil-modal" class="modal">
+					<div class="modal-content">
+						<span class="close" onclick="cerrarPerfil()">&times;</span>
+						<h2>Hola, invitado 👋</h2>
+						<p>¿Ya tienes cuenta?</p>
+						<button onclick="irALogin()">Iniciar sesión</button>
+						<p style="margin-top: 15px;">¿Eres nuevo aquí?</p>
+						<button onclick="irARegistro()">Registrarse</button>
+					</div>
+				</div>
+				<button onclick="mostrarFavoritos()"><i class="fa-solid fa-heart"></i></button>
+				<div id="favoritos-modal" class="modal">
+					<div class="modal-content">
+						<span class="close" onclick="cerrarFavoritos()">&times;</span>
+						<h2>Mis favoritos</h2>
+						<div id="favoritos-lista">
+							<p>No tienes productos favoritos aún.</p>
+						</div>
+						<div class="modal-actions">
+							<button onclick="vaciarFavoritos()">Vaciar favoritos</button>
+						</div>
+					</div>
+				</div>
+				<button onclick="mostrarCarrito()"><i class="fa-solid fa-cart-shopping"></i></button>
 				<div id="carrito-modal" class="modal">
 					<div class="modal-content">
 						<span class="close" onclick="cerrarCarrito()">&times;</span>
 						<h2>Carrito de compras</h2>
 						<div id="carrito-lista"></div>
 						<p><strong>Total:</strong> $<span id="carrito-total">0</span></p>
-						<div class="carrito-acciones">
+						<div class="modal-actions">
 							<button onclick="vaciarCarrito()">Vaciar carrito</button>
 							<button onclick="realizarCompra()">Comprar</button>
 						</div>
@@ -51,78 +61,70 @@
 			</div>
 		</nav>
 	</header>
-	<section class="seccion-principal">
-		<div class="info">
-			<h2 class="tiseccprin">RE<span>LOOP</span></h2>
-			<h3 class="eslogan">Tu estilo, tu segunda vuelta</h3>
-			<p class="descripcion">Encuentra moda, tecnología, muebles y más productos únicos con historia y estilo.
-			</p>
 
-			<button class="boton">Explorar ahora</button>
+	<section class="hero-section">
+		<div class="hero-text">
+			<h2 class="hero-title">RE<span>LOOP</span></h2>
+			<h3 class="hero-slogan">Tu estilo, tu segunda vuelta</h3>
+			<p class="hero-description">Encuentra moda, tecnología, muebles y más productos únicos con historia y estilo.</p>
+			<button class="btn-primary">Explorar ahora</button>
 		</div>
-
-		<div class="img-seccion-1">
-			<img src="asset/image/imgseccionprin.png" alt="Audífonos" class="imagen-producto">
+		<div class="hero-image">
+			<img src="asset/image/imgseccionprin.png" alt="Audífonos">
 		</div>
 	</section>
-	<section class="barra-recomendaciones">
 
-
-		<div class="opcion">
-			<img src="asset/image/tendencias.png" alt="Tendencias">
+	<section class="barra-opciones">
+		<div class="opcion-reloop">
+			<i class="fa-solid fa-fire"></i>
 			<h4>Tendencia</h4>
 			<p>Ver historial</p>
 		</div>
-
-		<div class="opcion">
-			<img src="asset/image/nuevo.png" alt="Nuevo">
+		<div class="opcion-reloop">
+			<i class="fa-solid fa-star"></i>
 			<h4>Casi Nuevos</h4>
 			<p>Ofertas hasta 40%</p>
 		</div>
-
-		<div class="opcion">
-			<img src="asset/image/gorra.png" alt="Gorra">
+		<div class="opcion-reloop">
+			<i class="fa-solid fa-shirt"></i>
 			<h4>Ropa</h4>
 			<p>Descuentos 30%</p>
 		</div>
-
-		<div class="opcion">
-			<img src="asset/image/oferta-especial.png" alt="Ofertas">
+		<div class="opcion-reloop">
+			<i class="fa-solid fa-tags"></i>
 			<h4>Ofertas</h4>
 			<p>Desde $10.000</p>
 		</div>
 	</section>
-	<section class="categorias">
-		<h2>Categorías destacadas</h2>
 
-		<div class="contenedor-categorias">
-			<div class="categoria">
-				<img src="asset/image/ropa.png" alt="Ropa">
+	<section class="seccion-destacados">
+		<h2>¡Explora los destacados que están dando de qué hablar!</h2>
+		<div class="grid-destacados">
+			<div class="item-destacado">
+				<img src="asset/image/ropa.png" alt="tendencia1">
 				<h4>Ropa</h4>
 			</div>
-			<div class="categoria">
+			<div class="item-destacado">
 				<img src="asset/image/computador.png" alt="Computadores">
 				<h4>Computadores</h4>
 			</div>
-			<div class="categoria">
-				<img src="asset/image/videojuego.jpg" alt="Videojuegos">
+			<div class="item-destacado">
+				<img src="asset/image/videojuego.png" alt="Videojuegos">
 				<h4>Videojuegos</h4>
 			</div>
-			<div class="categoria">
+			<div class="item-destacado">
 				<img src="asset/image/juguetes.png" alt="Juegos">
 				<h4>Juegos</h4>
 			</div>
 		</div>
-
-		<div class="ofertas">
-			<div class="tarjeta-oferta">
+		<div class="fila-ofertas">
+			<div class="caja-oferta1">
 				<h3>Ofertas básicas</h3>
 				<p>Encuentra productos diarios a precios bajos.</p>
 				<a href="#">Ver más</a>
 				<img src="asset/image/controlvideojuego.png" alt="Control">
 			</div>
-
-			<div class="tarjeta-oferta">
+			<div class="caja-oferta2 caja-oferta1">
 				<h3>Descuentos por tiempo limitado</h3>
 				<p>Aprovecha los mejores precios de la semana.</p>
 				<a href="#">Ver más</a>
@@ -130,13 +132,13 @@
 			</div>
 		</div>
 	</section>
-	<section class="envios seccion-principal">
-		<div class="info">
-			<h1 class="tiseccprin1 tiseccprin4">DALE UNA NUEVA VIDA A LO QUE NO USAS</h1>
-		</div>
 
-		<div class="img-seccion-4">
-			<img src="asset/image/imgseccion-4.png" alt="Audífonos" class="imagen-producto1">
+	<section class="seccion-reciclaje">
+		<div class="img-reciclaje">
+			<img src="asset/image/imgseccion-4.png" alt="Reciclaje">
+		</div>
+		<div class="texto-reciclaje">
+			<h2><span>Dale una segunda vida</span><br>a lo que merece ser visto otra vez.</h2>
 		</div>
 	</section>
 
@@ -151,26 +153,22 @@
 					<li><a href="#">Contacto</a></li>
 				</ul>
 			</div>
-
 			<div class="columna">
 				<h4>Gana dinero</h4>
 				<ul>
 					<li><a href="#">Vende con nosotros</a></li>
 					<li><a href="#">Afíliate</a></li>
-					<li><a href="#">Publica productos</a></li>
 				</ul>
 			</div>
-
 			<div class="columna">
 				<h4>Ayuda</h4>
 				<ul>
-					<li><a href="#">Mi cuenta</a></li>
+					<li><a href="pages/perfil.html">Mi cuenta</a></li>
 					<li><a href="#">Pedidos</a></li>
 					<li><a href="#">Envíos y devoluciones</a></li>
 					<li><a href="#">Soporte</a></li>
 				</ul>
 			</div>
-
 			<div class="columna">
 				<h4>Pagos</h4>
 				<ul>
@@ -180,7 +178,6 @@
 				</ul>
 			</div>
 		</div>
-
 		<div class="pie-inferior">
 			<p>© 2025 SegundaMano. Todos los derechos reservados.</p>
 			<div class="enlaces-legales">
@@ -192,5 +189,4 @@
 	</footer>
 	<script src="script.js"></script>
 </body>
-
 </html>
