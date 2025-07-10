@@ -13,34 +13,69 @@
 
 <body>
 	<header>
-		<!-- navegador -->
 		<nav>
 			<div class="navegador">
 				<h1 class="nombreweb">RE<span>LOOP</span></h1>
+
 				<div class="enlaces-1">
 					<a href="../index.html">Inicio</a>
-					<a href="categoria.html">Categorias</a>
-					<a href="ofertas.html">Ofertas</a>
-					<a href="vender.html">Vender</a>
+					<a href="productos.html">Productos</a>
+					<a href="vender.html" id="vender-link" style="display: none;">Vender</a>
+					<a href="editar.html" id="editar-link" style="display: none;">Editar</a>
 				</div>
 			</div>
-			<div class="enlaces-2 enlaces-1">
-				<a href="#"><i class="fa-solid fa-circle-user"></i></a>
-				<a href="#"><i class="fa-solid fa-heart"></i></a>
+			<div class="user-actions nav-links">
+				<!-- Contenedor para usuarios NO logueados -->
+				<div id="login-opciones">
+					<button onclick="mostrarPerfil()"><i class="fa-solid fa-user"></i></button>
+					<div id="perfil-modal" class="modal">
+						<div class="modal-content">
+							<span class="close" onclick="cerrarPerfil()">&times;</span>
+							<h2>Hola, invitado 👋</h2>
+							<p>¿Ya tienes cuenta?</p>
+							<button><a href="pages/login.html#form-login">Iniciar Sesión</a></button>
+							<p style="margin-top: 15px;">¿Eres nuevo aquí?</p>
+							<button><a href="pages/login.html#form-registra">Registrarse</a></button>
+						</div>
+					</div>
+				</div>
 
-				<!-- Botón para ver carrito -->
-				<button onclick="mostrarCarrito()" class="carrito-btn">
-					<i class="fa-solid fa-cart-shopping"></i>
-				</button>
-
-				<!-- Modal del carrito -->
+				<!-- Contenedor para usuarios logueados -->
+				<div id="logout-opcion" style="display: none;">
+					<button id="logout-icon" title="Opciones de usuario">
+						<i class="fa-solid fa-arrow-right-from-bracket"></i>
+					</button>
+					<div id="logout-modal" class="modal">
+						<div class="modal-content">
+							<span class="close" onclick="cerrarLogoutModal()">&times;</span>
+							<h2>¿Qué deseas hacer?</h2>
+							<p>Selecciona una opción:</p>
+							<button onclick="irAlPerfil()">Ir a mi perfil</button>
+							<button onclick="cerrarSesion()">Cerrar sesión</button>
+						</div>
+					</div>
+				</div>
+				<button onclick="mostrarFavoritos()"><i class="fa-solid fa-heart"></i></button>
+				<div id="favoritos-modal" class="modal">
+					<div class="modal-content">
+						<span class="close" onclick="cerrarFavoritos()">&times;</span>
+						<h2>Mis favoritos</h2>
+						<div id="favoritos-lista">
+							<p>No tienes productos favoritos aún.</p>
+						</div>
+						<div class="modal-actions">
+							<button onclick="vaciarFavoritos()">Vaciar favoritos</button>
+						</div>
+					</div>
+				</div>
+				<button onclick="mostrarCarrito()"><i class="fa-solid fa-cart-shopping"></i></button>
 				<div id="carrito-modal" class="modal">
 					<div class="modal-content">
 						<span class="close" onclick="cerrarCarrito()">&times;</span>
 						<h2>Carrito de compras</h2>
 						<div id="carrito-lista"></div>
 						<p><strong>Total:</strong> $<span id="carrito-total">0</span></p>
-						<div class="carrito-acciones">
+						<div class="modal-actions">
 							<button onclick="vaciarCarrito()">Vaciar carrito</button>
 							<button onclick="realizarCompra()">Comprar</button>
 						</div>
@@ -48,36 +83,43 @@
 				</div>
 			</div>
 		</nav>
+
 	</header>
+
 	<section class="formulariouno">
 		<div class="contenedor" id="contenedor">
 			<!-- Formulario de inicio -->
-			<div class="formulario login">
+			<div class="formulario login" id="form-login">
 				<div class="contenido">
-					<h1 class="logo">RE<span>LOOP</span></h1>
-					<h2>¡Bienvenido de nuevo!</h2>
-					<form>
-						<input type="text" placeholder="Correo electrónico" required />
-						<input type="password" placeholder="Contraseña" required />
-						<button type="submit">Iniciar sesión</button>
+					<h1 class="logo-form">RE<span>LOOP</span></h1>
+					<h2 class="form-titulo">¡Bienvenido de nuevo!</h2>
+					<form id="login-form" class="form-login-form">
+						<input id="login-username" class="form-input" type="text" placeholder="Correo electrónico"
+							required />
+						<input id="login-password" class="form-input" type="password" placeholder="Contraseña"
+							required />
+						<button class="form-btn" type="submit">Iniciar sesión</button>
 					</form>
-					<p>¿No tienes una cuenta? <a onclick="mostrarRegistro()">Regístrate</a></p>
+					<p class="form-text">¿No tienes una cuenta? <span class="form-link"
+							onclick="mostrarRegistro()">Regístrate</span></p>
 				</div>
 				<div class="imagen login-img"></div>
 			</div>
 
 			<!-- Formulario de registro -->
-			<div class="formulario registro">
+			<div class="formulario registro" id="form-registra">
 				<div class="contenido">
-					<h1 class="logo">RE<span>LOOP</span></h1>
-					<h2>Crea tu cuenta</h2>
-					<form>
-						<input type="text" placeholder="Nombre completo" required />
-						<input type="email" placeholder="Correo electrónico" required />
-						<input type="password" placeholder="Contraseña" required />
-						<button type="submit">Registrarse</button>
+					<h1 class="logo-form">RE<span>LOOP</span></h1>
+					<h2 class="form-titulo">Crea tu cuenta</h2>
+					<form id="register-form" class="form-registro-form">
+						<input id="register-username" class="form-input" type="text" placeholder="Nombre completo"
+							required />
+						<input id="register-password" class="form-input" type="password" placeholder="Contraseña"
+							required />
+						<button class="form-btn" type="submit">Registrarse</button>
 					</form>
-					<p>¿Ya tienes una cuenta? <a onclick="mostrarLogin()">Inicia sesión</a></p>
+					<p class="form-text">¿Ya tienes una cuenta? <span class="form-link" onclick="mostrarLogin()">Inicia
+							sesión</span></p>
 				</div>
 				<div class="imagen registro-img"></div>
 			</div>

@@ -120,7 +120,10 @@ nav {
 .close:hover {
   color: #333;
 }
-
+button {
+  all: unset;
+  cursor: pointer;
+}
 /* ========== HERO SECTION ========== */
 .hero-section {
   display: flex;
@@ -170,11 +173,6 @@ nav {
 .btn-primary:hover {
   background-color: var(--color-acento-1);
   color: white;
-}
-
-button {
-  all: unset;
-  cursor: pointer;
 }
 
 .hero-image img {

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../style/productos.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap"
+		rel="stylesheet">
+	<title>RELOOP - Categorias</title>
+</head>
+
+<body>
+
+	<header>
+		<nav>
+			<div class="nav-container">
+				<h1 class="brand-name">RE<span>LOOP</span></h1>
+				<div class="nav-links">
+					<a href="../index.html">Inicio</a>
+					<a href="productos.html">Productos</a>
+					<a href="vender.html" id="vender-link" style="display: none;">Vender</a>
+					<a href="editar.html" id="editar-link" style="display: none;">Editar</a>
+				</div>
+			</div>
+			<div class="user-actions nav-links">
+				<button onclick="mostrarPerfil()"><i class="fa-solid fa-user"></i></button>
+				<div id="perfil-modal" class="modal">
+					<div class="modal-content">
+						<span class="close" onclick="cerrarPerfil()">&times;</span>
+						<h2>Hola, invitado 👋</h2>
+						<p>¿Ya tienes cuenta?</p>
+						<button onclick="irALogin()"><a href="pages/login.html#form-login">Iniciar Sesión</a></button>
+						<p style="margin-top: 15px;">¿Eres nuevo aquí?</p>
+						<button onclick="irARegistro()"><a
+								href="pages/login.html#form-registra">Registrarse</a></button>
+					</div>
+				</div>
+				<button onclick="mostrarFavoritos()"><i class="fa-solid fa-heart"></i></button>
+				<div id="favoritos-modal" class="modal">
+					<div class="modal-content">
+						<span class="close" onclick="cerrarFavoritos()">&times;</span>
+						<h2>Mis favoritos</h2>
+						<div id="favoritos-lista">
+							<p>No tienes productos favoritos aún.</p>
+						</div>
+						<div class="modal-actions">
+							<button onclick="vaciarFavoritos()">Vaciar favoritos</button>
+						</div>
+					</div>
+				</div>
+				<button onclick="mostrarCarrito()"><i class="fa-solid fa-cart-shopping"></i></button>
+				<div id="carrito-modal" class="modal">
+					<div class="modal-content">
+						<span class="close" onclick="cerrarCarrito()">&times;</span>
+						<h2>Carrito de compras</h2>
+						<div id="carrito-lista"></div>
+						<p><strong>Total:</strong> $<span id="carrito-total">0</span></p>
+						<div class="modal-actions">
+							<button onclick="vaciarCarrito()">Vaciar carrito</button>
+							<button onclick="realizarCompra()">Comprar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+<section class="hero">
+			<div class="hero-content">
+				<div class="hero-text">
+					<h1>Productos <br><span>de Segunda Mano</span></h1>
+					<p>Descubre artículos únicos, ahorra dinero y cuida el planeta comprando y vendiendo productos
+						reutilizados.
+					</p>
+				</div>
+				<div class="hero-image">
+					<img src="../asset/image/categoriasbanner.png" alt="Productos de segunda mano">
+				</div>
+			</div>
+		</section>
+		<h2 class="nomcategoria">!Lo mejor de Reloop!</h2>
+		
+		<!-- Modal para detalles del producto -->
+		<!-- 🎯 Aquí se mostrarán los productos cargados dinámicamente -->
+		<section class="productos-dinamicos">
+			<div id="product-container" class="product-grid">
+				<!-- Los productos se cargan desde script.js -->
+			</div>
+		</section>
+
+		<!-- Modal de detalles del producto -->
+		<div id="product-modal" class="modal">
+			<div class="modal-content">
+				<span class="close" id="close-modal">&times;</span>
+				<img id="modal-image" src="" alt="" style="max-width: 100%; border-radius: 10px;" />
+				<h2 id="modal-title"></h2>
+				<p id="modal-description"></p>
+				<p><strong>Precio:</strong> $<span id="modal-price"></span></p>
+			</div>
+		</div>
+	</main>
+	<footer class="pie">
+		<div class="contenedor-footer">
+			<div class="columna">
+				<h4>Conócenos</h4>
+				<ul>
+					<li><a href="#">Nuestra historia</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Equipo</a></li>
+					<li><a href="#">Contacto</a></li>
+				</ul>
+			</div>
+			<div class="columna">
+				<h4>Gana dinero</h4>
+				<ul>
+					<li><a href="#">Vende con nosotros</a></li>
+					<li><a href="#">Afíliate</a></li>
+				</ul>
+			</div>
+			<div class="columna">
+				<h4>Ayuda</h4>
+				<ul>
+					<li><a href="pages/perfil.html">Mi cuenta</a></li>
+					<li><a href="#">Pedidos</a></li>
+					<li><a href="#">Envíos y devoluciones</a></li>
+					<li><a href="#">Soporte</a></li>
+				</ul>
+			</div>
+			<div class="columna">
+				<h4>Pagos</h4>
+				<ul>
+					<li><a href="#">Métodos de pago</a></li>
+					<li><a href="#">Recargar saldo</a></li>
+					<li><a href="#">Cupones</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="pie-inferior">
+			<p>© 2025 SegundaMano. Todos los derechos reservados.</p>
+			<div class="enlaces-legales">
+				<a href="#">Términos de uso</a>
+				<a href="#">Privacidad</a>
+				<a href="#">Cookies</a>
+			</div>
+		</div>
+	</footer>
+	<script src="../script.js"></script>
+</body>
+
+</html>

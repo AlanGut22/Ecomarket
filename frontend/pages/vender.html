@@ -1,79 +1,88 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../style/Vender.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-<title>RELOOP - Vender</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../style/Vender.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap"
+		rel="stylesheet">
+	<title>RELOOP - Vender</title>
 </head>
+
 <body>
 
-<header>
-<nav>
-<div class="nav-container">
-<h1 class="brand-name">RE<span>LOOP</span></h1>
-<div class="nav-links">
-<a href="../index.html">Inicio</a>
-<a href="categorias.html">Categorías</a>
-<a href="promociones.html">Promociones</a>
-<a href="vender.html">Vender</a>
-</div>
-</div>
-<div class="user-actions nav-links">
-<button><i class="fa-solid fa-user"></i></button>
-<button><i class="fa-solid fa-heart"></i></button>
-<button><i class="fa-solid fa-cart-shopping"></i></button>
-</div>
-</nav>
-</header>
+	<header>
+		<nav>
+			<div class="nav-container">
+				<h1 class="brand-name">RE<span>LOOP</span></h1>
+				<div class="nav-links">
+					<a href="../index.html">Inicio</a>
+					<a href="productos.html">Productos</a>
+					<a href="vender.html">Vender</a>
+					<a href="editar.html">Editar</a>
+				</div>
+			</div>
+			<div class="user-actions nav-links">
+				<button onclick="mostrarPerfil()"><i class="fa-solid fa-user"></i></button>
+				<div id="perfil-modal" class="modal">
+					<div class="modal-content">
+						<span class="close" onclick="cerrarPerfil()">&times;</span>
+						<h2>Hola, invitado 👋</h2>
+						<p>¿Ya tienes cuenta?</p>
+						<button onclick="irALogin()"><a href="login.html#form-login">Iniciar Sesión</a></button>
+						<p style="margin-top: 15px;">¿Eres nuevo aquí?</p>
+						<button onclick="irARegistro()"><a href="login.html#form-registra">Registrarse</a></button>
+					</div>
+				</div>
+				<button onclick="mostrarFavoritos()"><i class="fa-solid fa-heart"></i></button>
+				<div id="favoritos-modal" class="modal">
+					<div class="modal-content">
+						<span class="close" onclick="cerrarFavoritos()">&times;</span>
+						<h2>Mis favoritos</h2>
+						<div id="favoritos-lista">
+							<p>No tienes productos favoritos aún.</p>
+						</div>
+						<div class="modal-actions">
+							<button onclick="vaciarFavoritos()">Vaciar favoritos</button>
+						</div>
+					</div>
+				</div>
+				<button onclick="mostrarCarrito()"><i class="fa-solid fa-cart-shopping"></i></button>
+				<div id="carrito-modal" class="modal">
+					<div class="modal-content">
+						<span class="close" onclick="cerrarCarrito()">&times;</span>
+						<h2>Carrito de compras</h2>
+						<div id="carrito-lista"></div>
+						<p><strong>Total:</strong> $<span id="carrito-total">0</span></p>
+						<div class="modal-actions">
+							<button onclick="vaciarCarrito()">Vaciar carrito</button>
+							<button onclick="realizarCompra()">Comprar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
 
-<main>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-text">
-      <h1>Vende tus <br><span>productos</span></h1>
-      <p>Dale una segunda vida a lo que ya no usas y gana dinero mientras ayudas al planeta.</p>
-      <button>Publica Ahora</button>
-    </div>
-    <div class="hero-image">
-      <img src="img/sell-banner.png" alt="Vender">
-    </div>
-  </div>
-</section>
-
-<!-- FORMULARIO -->
-<section class="sell-form-section">
-  <div class="form-container">
-    <h2>Publica tu producto</h2>
-    <form class="sell-form">
-      <input type="text" placeholder="Título del producto" required>
-      <textarea placeholder="Descripción del producto" required></textarea>
-      <input type="number" placeholder="Precio" required>
-      <input type="file" accept="image/*">
-      <button type="submit">Publicar</button>
-    </form>
-  </div>
-</section>
-
-<!-- BANNER FINAL -->
-<section class="promo-banner">
-  <div class="promo-content">
-    <img src="img/eco-shopping.png" alt="Publica más">
-    <div class="promo-text">
-      <h2>¡Sigue vendiendo!</h2>
-      <p>Cuantos más productos publiques, más oportunidades tendrás de ganar y de ayudar al medio ambiente.</p>
-      <button>Publicar otro</button>
-    </div>
-  </div>
-</section>
-
-</main>
+	<main>
+		<!-- FORMULARIO CON IDs para conectar JS -->
+		<section class="sell-form-section">
+			<div class="form-container">
+				<h2>Publica tu producto</h2>
+				<form id="product-form" class="sell-form">
+					<input id="title" type="text" placeholder="Título del producto" required>
+					<textarea id="description" placeholder="Descripción del producto" required></textarea>
+					<input id="price" type="number" placeholder="Precio" required>
+					<input id="image" type="text" placeholder="URL de imagen" required>
+					<!-- En lugar de input file, usamos un campo URL por simplicidad -->
+					<button type="submit">Publicar</button>
+				</form>
+			</div>
+		</section>
+	</main>
 
 </body>
+
 </html>
-
-

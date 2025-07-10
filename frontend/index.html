@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="style/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap"
+		rel="stylesheet">
 	<title>RELOOP</title>
 </head>
+
 <body>
 	<header>
 		<nav>
@@ -15,21 +18,39 @@
 				<h1 class="brand-name">RE<span>LOOP</span></h1>
 				<div class="nav-links">
 					<a href="index.html">Inicio</a>
-					<a href="pages/categoria.html">Categorías</a>
-					<a href="pages/ofertas.html">Ofertas</a>
-					<a href="pages/vender.html">Vender</a>
+					<a href="pages/productos.html">Productos</a>
+					<a href="pages/vender.html" id="vender-link" style="display: none;">Vender</a>
+					<a href="pages/editar.html" id="editar-link" style="display: none;">Editar</a>
 				</div>
 			</div>
 			<div class="user-actions nav-links">
-				<button onclick="mostrarPerfil()"><i class="fa-solid fa-user"></i></button>
-				<div id="perfil-modal" class="modal">
-					<div class="modal-content">
-						<span class="close" onclick="cerrarPerfil()">&times;</span>
-						<h2>Hola, invitado 👋</h2>
-						<p>¿Ya tienes cuenta?</p>
-						<button onclick="irALogin()">Iniciar sesión</button>
-						<p style="margin-top: 15px;">¿Eres nuevo aquí?</p>
-						<button onclick="irARegistro()">Registrarse</button>
+				<!-- Contenedor para usuarios NO logueados -->
+				<div id="login-opciones">
+					<button onclick="mostrarPerfil()"><i class="fa-solid fa-user"></i></button>
+					<div id="perfil-modal" class="modal">
+						<div class="modal-content">
+							<span class="close" onclick="cerrarPerfil()">&times;</span>
+							<h2>Hola, invitado 👋</h2>
+							<p>¿Ya tienes cuenta?</p>
+							<button><a href="pages/login.html#form-login">Iniciar Sesión</a></button>
+							<p style="margin-top: 15px;">¿Eres nuevo aquí?</p>
+							<button><a href="pages/login.html#form-registra">Registrarse</a></button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Contenedor para usuarios logueados -->
+				<div id="logout-opcion" style="display: none;">
+					<button id="logout-icon" title="Opciones de usuario">
+						<i class="fa-solid fa-arrow-right-from-bracket"></i>
+					</button>
+					<div id="logout-modal" class="modal">
+						<div class="modal-content">
+							<span class="close" onclick="cerrarLogoutModal()">&times;</span>
+							<h2>¿Qué deseas hacer?</h2>
+							<p>Selecciona una opción:</p>
+							<button onclick="cerrarSesion()">Cerrar sesión</button>
+						</div>
 					</div>
 				</div>
 				<button onclick="mostrarFavoritos()"><i class="fa-solid fa-heart"></i></button>
@@ -66,7 +87,8 @@
 		<div class="hero-text">
 			<h2 class="hero-title">RE<span>LOOP</span></h2>
 			<h3 class="hero-slogan">Tu estilo, tu segunda vuelta</h3>
-			<p class="hero-description">Encuentra moda, tecnología, muebles y más productos únicos con historia y estilo.</p>
+			<p class="hero-description">Encuentra moda, tecnología, muebles y más productos únicos con historia y
+				estilo.</p>
 			<button class="btn-primary">Explorar ahora</button>
 		</div>
 		<div class="hero-image">
@@ -163,7 +185,7 @@
 			<div class="columna">
 				<h4>Ayuda</h4>
 				<ul>
-					<li><a href="pages/perfil.html">Mi cuenta</a></li>
+					<li><a href="#" id="footer-perfil-link">Mi cuenta</a></li>
 					<li><a href="#">Pedidos</a></li>
 					<li><a href="#">Envíos y devoluciones</a></li>
 					<li><a href="#">Soporte</a></li>
@@ -189,4 +211,5 @@
 	</footer>
 	<script src="script.js"></script>
 </body>
+
 </html>

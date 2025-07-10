@@ -9,31 +9,52 @@
 let todosLosProductos = [];
 const currentUser = JSON.parse(localStorage.getItem('user'));
 
+window.addEventListener('DOMContentLoaded', () => {
+  const loginOpciones = document.getElementById('login-opciones');
+  const logoutOpcion = document.getElementById('logout-opcion');
+  const venderLink = document.getElementById('vender-link');
+  const editarLink = document.getElementById('editar-link');
+  const logoutBtn = document.getElementById('logout-icon');
+
+  if (currentUser) {
+    if (loginOpciones) loginOpciones.style.display = 'none';
+    if (logoutOpcion) logoutOpcion.style.display = 'inline-block';
+    if (venderLink) venderLink.style.display = 'inline-block';
+    if (editarLink) editarLink.style.display = 'inline-block';
+  } else {
+    if (loginOpciones) loginOpciones.style.display = 'inline-block';
+    if (logoutOpcion) logoutOpcion.style.display = 'none';
+    if (venderLink) venderLink.style.display = 'none';
+    if (editarLink) editarLink.style.display = 'none';
+  }
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      document.getElementById("logout-modal").style.display = "block";
+    });
+  }
+});
+
+function cerrarLogoutModal() {
+  document.getElementById("logout-modal").style.display = "none";
+}
+
+function cerrarSesion() {
+  localStorage.removeItem('user');
+  const path = window.location.pathname.includes('/pages/')
+    ? '../index.html'
+    : 'index.html';
+  window.location.href = path;
+}
+
+function irAlPerfil() {
+  window.location.href = 'pages/perfil.html';
+}
+
 // =============================
-// 👤 Manejo de sesión de usuario
+// 🔑 Login y Registro (solo en login.html)
 // =============================
-if (currentUser) {
-  // Mostrar secciones si hay sesión
-  document.getElementById('login-section').style.display = 'none';
-  document.getElementById('register-section').style.display = 'none';
-  document.getElementById('upload-section').style.display = 'block';
-  document.getElementById('user-session').style.display = 'flex';
-  document.getElementById('user-info').textContent = `Sesión iniciada como: ${currentUser.nombre_usuario}`;
-  document.getElementById('logout-btn').style.display = 'inline';
-
-  // Cerrar sesión
-  document.getElementById('logout-btn').addEventListener('click', () => {
-    localStorage.removeItem('user');
-    location.reload();
-  });
-
-  cargarHistorial();
-} else {
-  // Ocultar áreas si no hay sesión
-  document.getElementById('upload-section').style.display = 'none';
-  document.getElementById('user-session').style.display = 'none';
-
-  // Iniciar sesión
+if (document.getElementById('login-form')) {
   document.getElementById('login-form').addEventListener('submit', function (e) {
     e.preventDefault();
     const nombre_usuario = document.getElementById('login-username').value;
@@ -51,15 +72,16 @@ if (currentUser) {
       .then(data => {
         alert('Bienvenido, ' + data.nombre_usuario);
         localStorage.setItem('user', JSON.stringify(data));
-        location.reload();
+        window.location.href = '../index.html';
       })
       .catch(err => {
         alert('Usuario o contraseña incorrectos');
         console.error(err);
       });
   });
+}
 
-  // Registrar usuario
+if (document.getElementById('register-form')) {
   document.getElementById('register-form').addEventListener('submit', function (e) {
     e.preventDefault();
     const nombre_usuario = document.getElementById('register-username').value;
@@ -78,13 +100,41 @@ if (currentUser) {
       .then(data => {
         alert('Usuario registrado con éxito');
         localStorage.setItem('user', JSON.stringify(data));
-        location.reload();
+        window.location.href = '../index.html';
       })
       .catch(err => {
         alert(err.message);
         console.error(err);
       });
   });
+}
+
+// =============================
+// ℹ️ Navegación y visibilidad de elementos
+// =============================
+if (document.getElementById('footer-perfil-link')) {
+  document.getElementById('footer-perfil-link').addEventListener('click', function (e) {
+    e.preventDefault();
+    window.location.href = currentUser ? 'pages/perfil.html' : 'pages/login.html';
+  });
+}
+
+// =============================
+// 👤 UI de sesión (perfil.html)
+// =============================
+if (document.getElementById('user-session')) {
+  if (currentUser) {
+    document.getElementById('user-info').textContent = `Sesión iniciada como: ${currentUser.nombre_usuario}`;
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      localStorage.removeItem('user');
+      location.href = '../index.html';
+    });
+    document.getElementById('upload-section')?.setAttribute('style', 'display:block;');
+    document.getElementById('user-session')?.setAttribute('style', 'display:flex;');
+  } else {
+    document.getElementById('upload-section')?.setAttribute('style', 'display:none;');
+    document.getElementById('user-session')?.setAttribute('style', 'display:none;');
+  }
 }
 
 // =============================
@@ -106,16 +156,19 @@ function mostrarProductos(lista) {
 
   lista.forEach(product => {
     const div = document.createElement('div');
-    div.className = 'product';
+    div.className = 'categoria-card';
     div.innerHTML = `
-      <img src="${product.imagen}" alt="${product.titulo}">
+      <img src="${product.imagen}" alt="${product.titulo}" />
       <h3>${product.titulo}</h3>
-      <p>$${product.precio}</p>
-      <button onclick='verDetalles(${JSON.stringify(product)})'>Ver más</button>
-      <button onclick="agregarAlCarrito(${product.id})">Agregar al carrito</button>
-      ${currentUser ? `
-        <button onclick="editarProducto(${product.id})">Editar</button>
-        <button onclick="eliminarProducto(${product.id})">Eliminar</button>` : ''}
+      <p><strong>$${product.precio}</strong></p>
+      <div class="botones">
+        <button onclick='verDetalles(${JSON.stringify(product)})'>Ver más</button>
+        <button onclick="agregarAlCarrito(${product.id})">Agregar al carrito</button>
+        ${currentUser ? `
+          <button onclick="editarProducto(${product.id})">Editar</button>
+          <button onclick="eliminarProducto(${product.id})">Eliminar</button>
+        ` : ''}
+      </div>
     `;
     container.appendChild(div);
   });
@@ -415,18 +468,15 @@ function cerrarPerfil() {
   document.getElementById("perfil-modal").style.display = "none";
 }
 
-function mostrarFavoritos() {
-  document.getElementById("favoritos-modal").style.display = "block";
+function agregarAFavoritos(producto) {
+  let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+  const yaExiste = favoritos.some(p => p.id === producto.id);
+  if (yaExiste) return alert('Ya está en tus favoritos');
+  favoritos.push(producto);
+  localStorage.setItem('favoritos', JSON.stringify(favoritos));
+  alert(`"${producto.titulo}" agregado a favoritos`);
 }
 
-function cerrarFavoritos() {
-  document.getElementById("favoritos-modal").style.display = "none";
-}
-
-function vaciarFavoritos() {
-  const favoritosLista = document.getElementById("favoritos-lista");
-  favoritosLista.innerHTML = "<p>No tienes productos favoritos aún.</p>";
-}
 
 // Cerrar modales si se hace clic afuera
 window.addEventListener("click", function (e) {
