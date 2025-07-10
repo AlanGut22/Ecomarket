@@ -8,7 +8,6 @@ const router = Router();
 // =======================
 router.get('/', async (req, res) => {
 	try {
-		// Nombre de tabla corregido a "productos"
 		const [rows] = await db.query('SELECT * FROM productos');
 		res.json(rows);
 	} catch (error) {
@@ -21,10 +20,9 @@ router.get('/', async (req, res) => {
 // ➕ Crear nuevo producto
 // =======================
 router.post('/', async (req, res) => {
-	const { title, price, image, description } = req.body;
+	const { titulo, precio, imagen, descripcion } = req.body;
 
-	// Validamos campos
-	if (!title || !price || !image || !description) {
+	if (!titulo || !precio || !imagen || !descripcion) {
 		res.status(400).json({ message: 'Faltan campos requeridos' });
 		return;
 	}
@@ -32,15 +30,15 @@ router.post('/', async (req, res) => {
 	try {
 		const [result]: any = await db.query(
 			`INSERT INTO productos (titulo, precio, imagen, descripcion) VALUES (?, ?, ?, ?)`,
-			[title, price, image, description]
+			[titulo, precio, imagen, descripcion]
 		);
 
 		res.status(201).json({
 			id: result.insertId,
-			titulo: title,
-			precio: price,
-			imagen: image,
-			descripcion: description
+			titulo,
+			precio,
+			imagen,
+			descripcion
 		});
 	} catch (error) {
 		console.error('Error al insertar producto:', error);
@@ -53,9 +51,9 @@ router.post('/', async (req, res) => {
 // =======================
 router.put('/:id', async (req, res) => {
 	const { id } = req.params;
-	const { title, price, image, description } = req.body;
+	const { titulo, precio, imagen, descripcion } = req.body;
 
-	if (!title || !price || !image || !description) {
+	if (!titulo || !precio || !imagen || !descripcion) {
 		res.status(400).json({ message: 'Faltan campos requeridos' });
 		return;
 	}
@@ -63,7 +61,7 @@ router.put('/:id', async (req, res) => {
 	try {
 		const [result]: any = await db.query(
 			`UPDATE productos SET titulo = ?, precio = ?, imagen = ?, descripcion = ? WHERE id = ?`,
-			[title, price, image, description, id]
+			[titulo, precio, imagen, descripcion, id]
 		);
 
 		if (result.affectedRows === 0) {
@@ -77,6 +75,7 @@ router.put('/:id', async (req, res) => {
 		res.status(500).json({ message: 'Error al actualizar el producto' });
 	}
 });
+
 
 // =======================
 // 🗑️ Eliminar producto

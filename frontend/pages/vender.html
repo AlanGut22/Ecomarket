@@ -25,27 +25,32 @@
 				</div>
 			</div>
 			<div class="user-actions nav-links">
-				<button onclick="mostrarPerfil()"><i class="fa-solid fa-user"></i></button>
-				<div id="perfil-modal" class="modal">
-					<div class="modal-content">
-						<span class="close" onclick="cerrarPerfil()">&times;</span>
-						<h2>Hola, invitado 👋</h2>
-						<p>¿Ya tienes cuenta?</p>
-						<button onclick="irALogin()"><a href="login.html#form-login">Iniciar Sesión</a></button>
-						<p style="margin-top: 15px;">¿Eres nuevo aquí?</p>
-						<button onclick="irARegistro()"><a href="login.html#form-registra">Registrarse</a></button>
+				<!-- Contenedor para usuarios NO logueados -->
+				<div id="login-opciones">
+					<button onclick="mostrarPerfil()"><i class="fa-solid fa-user"></i></button>
+					<div id="perfil-modal" class="modal">
+						<div class="modal-content">
+							<span class="close" onclick="cerrarPerfil()">&times;</span>
+							<h2>Hola, invitado 👋</h2>
+							<p>¿Ya tienes cuenta?</p>
+							<button><a href="login.html#form-login">Iniciar Sesión</a></button>
+							<p style="margin-top: 15px;">¿Eres nuevo aquí?</p>
+							<button><a href="login.html#form-registra">Registrarse</a></button>
+						</div>
 					</div>
 				</div>
-				<button onclick="mostrarFavoritos()"><i class="fa-solid fa-heart"></i></button>
-				<div id="favoritos-modal" class="modal">
-					<div class="modal-content">
-						<span class="close" onclick="cerrarFavoritos()">&times;</span>
-						<h2>Mis favoritos</h2>
-						<div id="favoritos-lista">
-							<p>No tienes productos favoritos aún.</p>
-						</div>
-						<div class="modal-actions">
-							<button onclick="vaciarFavoritos()">Vaciar favoritos</button>
+
+				<!-- Contenedor para usuarios logueados -->
+				<div id="logout-opcion" style="display: none;">
+					<button id="logout-icon" title="Opciones de usuario">
+						<i class="fa-solid fa-arrow-right-from-bracket"></i>
+					</button>
+					<div id="logout-modal" class="modal">
+						<div class="modal-content">
+							<span class="close" onclick="cerrarLogoutModal()">&times;</span>
+							<h2>¿Qué deseas hacer?</h2>
+							<p>Selecciona una opción:</p>
+							<button onclick="cerrarSesion()">Cerrar sesión</button>
 						</div>
 					</div>
 				</div>
@@ -76,13 +81,13 @@
 					<textarea id="description" placeholder="Descripción del producto" required></textarea>
 					<input id="price" type="number" placeholder="Precio" required>
 					<input id="image" type="text" placeholder="URL de imagen" required>
-					<!-- En lugar de input file, usamos un campo URL por simplicidad -->
 					<button type="submit">Publicar</button>
 				</form>
 			</div>
 		</section>
 	</main>
 
+	<script src="../script.js"></script>
 </body>
 
 </html>

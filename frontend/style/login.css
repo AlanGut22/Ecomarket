@@ -34,7 +34,7 @@ body {
 
 /* ========== NAV ========== */
 nav {
- display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 2% 8%;
@@ -55,6 +55,7 @@ nav {
 .nombreweb span {
   color: var(--color-acento-2);
 }
+
 .enlaces-1 {
   display: flex;
   gap: 30px;
@@ -71,6 +72,7 @@ nav {
 .enlaces-1 a:hover {
   color: var(--color-texto-claro);
 }
+
 .nav-links {
   display: flex;
   gap: 30px;
@@ -88,7 +90,12 @@ nav {
   color: var(--color-texto-claro);
 }
 
-/* ========== MODAL ========== */
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+/* ========== MODAL GENERAL ========== */
 .modal {
   display: none;
   position: fixed;
@@ -104,20 +111,20 @@ nav {
 .modal-content {
   background-color: var(--color-fondo);
   margin: 10% auto;
-  padding: 20px;
+  padding: 30px 20px;
   border-radius: 10px;
-  max-width: 500px;
+  max-width: 400px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   position: relative;
   text-align: center;
 }
 
 .modal-content h2 {
-  color: var(--color-texto-principal);
+  color: black;
 }
 
 .modal-content p {
-  color: var(--color-texto-claro);
+  color: black;
 }
 
 .close {
@@ -134,9 +141,20 @@ nav {
   color: #333;
 }
 
-button {
-  all: unset;
-  cursor: pointer;
+.modal-content button {
+  margin-top: 15px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  background-color: var(--color-acento-2);
+  color: var(--color-texto-principal);
+  border: none;
+  transition: 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: var(--color-acento-1);
+  color: white;
 }
 
 /* ========== FORMULARIOS ========== */
@@ -183,9 +201,11 @@ button {
   color: var(--color-acento-1);
   margin-bottom: 15px;
 }
-span{
-  color:var(--color-acento-2);
+
+span {
+  color: var(--color-acento-2);
 }
+
 .form-titulo {
   color: var(--color-texto-principal);
   margin-bottom: 20px;

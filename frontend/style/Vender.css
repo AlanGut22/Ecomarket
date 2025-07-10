@@ -89,20 +89,20 @@ button {
 .modal-content {
   background-color: var(--color-fondo);
   margin: 10% auto;
-  padding: 20px;
+  padding: 30px 20px;
   border-radius: 10px;
-  max-width: 500px;
+  max-width: 400px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   position: relative;
   text-align: center;
 }
 
 .modal-content h2 {
-  color: var(--color-texto-principal);
+  color: black;
 }
 
 .modal-content p {
-  color: var(--color-texto-claro);
+  color: black;
 }
 
 .close {
@@ -117,6 +117,22 @@ button {
 
 .close:hover {
   color: #333;
+}
+
+.modal-content button {
+  margin-top: 15px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  background-color: var(--color-acento-2);
+  color: var(--color-texto-principal);
+  border: none;
+  transition: 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: var(--color-acento-1);
+  color: white;
 }
 
 /* ========== FORMULARIO DE VENDER ========== */

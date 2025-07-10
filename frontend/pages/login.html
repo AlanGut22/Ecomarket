@@ -25,49 +25,6 @@
 				</div>
 			</div>
 			<div class="user-actions nav-links">
-				<!-- Contenedor para usuarios NO logueados -->
-				<div id="login-opciones">
-					<button onclick="mostrarPerfil()"><i class="fa-solid fa-user"></i></button>
-					<div id="perfil-modal" class="modal">
-						<div class="modal-content">
-							<span class="close" onclick="cerrarPerfil()">&times;</span>
-							<h2>Hola, invitado 👋</h2>
-							<p>¿Ya tienes cuenta?</p>
-							<button><a href="pages/login.html#form-login">Iniciar Sesión</a></button>
-							<p style="margin-top: 15px;">¿Eres nuevo aquí?</p>
-							<button><a href="pages/login.html#form-registra">Registrarse</a></button>
-						</div>
-					</div>
-				</div>
-
-				<!-- Contenedor para usuarios logueados -->
-				<div id="logout-opcion" style="display: none;">
-					<button id="logout-icon" title="Opciones de usuario">
-						<i class="fa-solid fa-arrow-right-from-bracket"></i>
-					</button>
-					<div id="logout-modal" class="modal">
-						<div class="modal-content">
-							<span class="close" onclick="cerrarLogoutModal()">&times;</span>
-							<h2>¿Qué deseas hacer?</h2>
-							<p>Selecciona una opción:</p>
-							<button onclick="irAlPerfil()">Ir a mi perfil</button>
-							<button onclick="cerrarSesion()">Cerrar sesión</button>
-						</div>
-					</div>
-				</div>
-				<button onclick="mostrarFavoritos()"><i class="fa-solid fa-heart"></i></button>
-				<div id="favoritos-modal" class="modal">
-					<div class="modal-content">
-						<span class="close" onclick="cerrarFavoritos()">&times;</span>
-						<h2>Mis favoritos</h2>
-						<div id="favoritos-lista">
-							<p>No tienes productos favoritos aún.</p>
-						</div>
-						<div class="modal-actions">
-							<button onclick="vaciarFavoritos()">Vaciar favoritos</button>
-						</div>
-					</div>
-				</div>
 				<button onclick="mostrarCarrito()"><i class="fa-solid fa-cart-shopping"></i></button>
 				<div id="carrito-modal" class="modal">
 					<div class="modal-content">
@@ -94,7 +51,7 @@
 					<h1 class="logo-form">RE<span>LOOP</span></h1>
 					<h2 class="form-titulo">¡Bienvenido de nuevo!</h2>
 					<form id="login-form" class="form-login-form">
-						<input id="login-username" class="form-input" type="text" placeholder="Correo electrónico"
+						<input id="login-username" class="form-input" type="text" placeholder="Nombre Completo"
 							required />
 						<input id="login-password" class="form-input" type="password" placeholder="Contraseña"
 							required />

@@ -25,28 +25,32 @@
 				</div>
 			</div>
 			<div class="user-actions nav-links">
-				<button onclick="mostrarPerfil()"><i class="fa-solid fa-user"></i></button>
-				<div id="perfil-modal" class="modal">
-					<div class="modal-content">
-						<span class="close" onclick="cerrarPerfil()">&times;</span>
-						<h2>Hola, invitado 👋</h2>
-						<p>¿Ya tienes cuenta?</p>
-						<button onclick="irALogin()"><a href="pages/login.html#form-login">Iniciar Sesión</a></button>
-						<p style="margin-top: 15px;">¿Eres nuevo aquí?</p>
-						<button onclick="irARegistro()"><a
-								href="pages/login.html#form-registra">Registrarse</a></button>
+				<!-- Contenedor para usuarios NO logueados -->
+				<div id="login-opciones">
+					<button onclick="mostrarPerfil()"><i class="fa-solid fa-user"></i></button>
+					<div id="perfil-modal" class="modal">
+						<div class="modal-content">
+							<span class="close" onclick="cerrarPerfil()">&times;</span>
+							<h2>Hola, invitado 👋</h2>
+							<p>¿Ya tienes cuenta?</p>
+							<button><a href="login.html#form-login">Iniciar Sesión</a></button>
+							<p style="margin-top: 15px;">¿Eres nuevo aquí?</p>
+							<button><a href="login.html#form-registra">Registrarse</a></button>
+						</div>
 					</div>
 				</div>
-				<button onclick="mostrarFavoritos()"><i class="fa-solid fa-heart"></i></button>
-				<div id="favoritos-modal" class="modal">
-					<div class="modal-content">
-						<span class="close" onclick="cerrarFavoritos()">&times;</span>
-						<h2>Mis favoritos</h2>
-						<div id="favoritos-lista">
-							<p>No tienes productos favoritos aún.</p>
-						</div>
-						<div class="modal-actions">
-							<button onclick="vaciarFavoritos()">Vaciar favoritos</button>
+
+				<!-- Contenedor para usuarios logueados -->
+				<div id="logout-opcion" style="display: none;">
+					<button id="logout-icon" title="Opciones de usuario">
+						<i class="fa-solid fa-arrow-right-from-bracket"></i>
+					</button>
+					<div id="logout-modal" class="modal">
+						<div class="modal-content">
+							<span class="close" onclick="cerrarLogoutModal()">&times;</span>
+							<h2>¿Qué deseas hacer?</h2>
+							<p>Selecciona una opción:</p>
+							<button onclick="cerrarSesion()">Cerrar sesión</button>
 						</div>
 					</div>
 				</div>
@@ -68,7 +72,7 @@
 	</header>
 
 	<main>
-<section class="hero">
+		<section class="hero">
 			<div class="hero-content">
 				<div class="hero-text">
 					<h1>Productos <br><span>de Segunda Mano</span></h1>
@@ -82,7 +86,7 @@
 			</div>
 		</section>
 		<h2 class="nomcategoria">!Lo mejor de Reloop!</h2>
-		
+
 		<!-- Modal para detalles del producto -->
 		<!-- 🎯 Aquí se mostrarán los productos cargados dinámicamente -->
 		<section class="productos-dinamicos">
@@ -123,7 +127,7 @@
 			<div class="columna">
 				<h4>Ayuda</h4>
 				<ul>
-					<li><a href="pages/perfil.html">Mi cuenta</a></li>
+					<li><a href="#">Mi cuenta</a></li>
 					<li><a href="#">Pedidos</a></li>
 					<li><a href="#">Envíos y devoluciones</a></li>
 					<li><a href="#">Soporte</a></li>

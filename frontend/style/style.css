@@ -9,32 +9,23 @@
 :root {
   --color-fondo: #F9FAFB;
   --color-acento-1: #D44A63;
-  /* rosado base */
   --color-acento-2: #C0C916;
-  /* amarillo mostaza */
   --color-texto-principal: #1E1E1E;
   --color-texto-blanco: #FFFFFF;
   --color-texto-gris: #7C7C7C;
   --color-texto-claro: #CCCCCC;
 
   --color-gris-claro: #EEF1F4;
-  /* Barras suaves */
   --color-gris-medio: #F5F5F5;
-  /* Tarjetas claras */
   --color-destacados: #F2F2F2;
-  /* Sección destacados y ofertas */
   --color-rosa-suave: #F4F4F6;
-  /* Sección reciclaje */
   --color-footer: #1E1E1E;
-  /* Pie de página oscuro */
 }
 
-/* ========== BODY ========== */
 body {
   background-color: var(--color-fondo);
 }
 
-/* ========== NAV ========== */
 nav {
   display: flex;
   justify-content: space-between;
@@ -75,7 +66,11 @@ nav {
   color: var(--color-texto-claro);
 }
 
-/* ========== MODAL GENERAL ========== */
+button {
+  all: unset;
+  cursor: pointer;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -91,20 +86,17 @@ nav {
 .modal-content {
   background-color: var(--color-fondo);
   margin: 10% auto;
-  padding: 20px;
+  padding: 30px 20px;
   border-radius: 10px;
-  max-width: 500px;
+  max-width: 400px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   position: relative;
   text-align: center;
 }
 
-.modal-content h2 {
-  color: var(--color-texto-principal);
-}
-
+.modal-content h2,
 .modal-content p {
-  color: var(--color-texto-claro);
+  color: black;
 }
 
 .close {
@@ -120,11 +112,23 @@ nav {
 .close:hover {
   color: #333;
 }
-button {
-  all: unset;
-  cursor: pointer;
+
+.modal-content button {
+  margin-top: 15px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  background-color: var(--color-acento-2);
+  color: var(--color-texto-principal);
+  border: none;
+  transition: 0.3s ease;
 }
-/* ========== HERO SECTION ========== */
+
+.modal-content button:hover {
+  background-color: var(--color-acento-1);
+  color: white;
+}
+
 .hero-section {
   display: flex;
   justify-content: space-around;
@@ -172,6 +176,14 @@ button {
 
 .btn-primary:hover {
   background-color: var(--color-acento-1);
+}
+
+.btn-primary a {
+  text-decoration: none;
+  color: var(--color-texto-principal);
+}
+
+.btn-primary a:hover {
   color: white;
 }
 
@@ -180,7 +192,6 @@ button {
   border-radius: 5px;
 }
 
-/* ========== BARRA OPCIONES ========== */
 .barra-opciones {
   display: flex;
   justify-content: space-evenly;
@@ -190,7 +201,6 @@ button {
   padding: 1rem 2rem;
   gap: 2rem;
   border-radius: 5px;
-  cursor: pointer;
 }
 
 .opcion-reloop {
@@ -212,12 +222,6 @@ button {
   margin: 0;
 }
 
-.opcion-reloop p {
-  font-size: 0.8rem;
-  color: gray;
-}
-
-/* ========== SECCIÓN DESTACADOS ========== */
 .seccion-destacados {
   padding: 2rem;
   background-color: var(--color-destacados);
@@ -231,14 +235,12 @@ button {
   color: var(--color-texto-principal);
 }
 
-/* ========== GRILLA DESTACADOS (como .contenedor-categorias) ========== */
 .grid-destacados {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1.5rem;
 }
 
-/* ========== TARJETAS DESTACADAS (como .categoria) ========== */
 .item-destacado {
   background-color: white;
   color: #333;
@@ -265,7 +267,6 @@ button {
   color: var(--color-footer);
 }
 
-/* ========== FILA DE OFERTAS ========== */
 .fila-ofertas {
   display: flex;
   flex-wrap: wrap;
@@ -273,20 +274,14 @@ button {
   margin-top: 2rem;
 }
 
-/* ========== CAJA DE OFERTA (como .tarjeta-oferta) ========== */
 .caja-oferta1 {
   background-color: #F4F4F6;
-  /* Puedes reemplazar con var(--color-destacados) si prefieres */
   padding: 1.5rem;
   flex: 1;
   min-width: 250px;
   border-radius: 0.5rem;
   position: relative;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.caja-oferta2 {
-  background-color: #EDEDED;
 }
 
 .caja-oferta1 h3 {
@@ -316,8 +311,6 @@ button {
   opacity: 0.8;
 }
 
-
-/* ========== SECCIÓN RECICLAJE ========== */
 .seccion-reciclaje {
   display: flex;
   justify-content: space-between;
@@ -343,7 +336,6 @@ button {
   max-width: 100%;
 }
 
-/* ========== FOOTER ========== */
 .pie {
   margin-top: 80px;
   background-color: var(--color-footer);

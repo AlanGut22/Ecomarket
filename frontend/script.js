@@ -110,48 +110,59 @@ if (document.getElementById('register-form')) {
 }
 
 // =============================
-// ℹ️ Navegación y visibilidad de elementos
+// ✍️ Publicar nuevo producto (solo en vender.html)
 // =============================
-if (document.getElementById('footer-perfil-link')) {
-  document.getElementById('footer-perfil-link').addEventListener('click', function (e) {
-    e.preventDefault();
-    window.location.href = currentUser ? 'pages/perfil.html' : 'pages/login.html';
-  });
-}
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('product-form');
 
-// =============================
-// 👤 UI de sesión (perfil.html)
-// =============================
-if (document.getElementById('user-session')) {
-  if (currentUser) {
-    document.getElementById('user-info').textContent = `Sesión iniciada como: ${currentUser.nombre_usuario}`;
-    document.getElementById('logout-btn').addEventListener('click', () => {
-      localStorage.removeItem('user');
-      location.href = '../index.html';
+  if (form && currentUser && window.location.pathname.includes('vender.html')) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const titulo = document.getElementById('title').value;
+      const precio = parseFloat(document.getElementById('price').value);
+      const imagen = document.getElementById('image').value;
+      const descripcion = document.getElementById('description').value;
+
+      fetch('http://localhost:3001/api/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ titulo, precio, imagen, descripcion })
+      })
+        .then(res => res.json())
+        .then(data => {
+          alert('Producto agregado con éxito');
+          location.reload();
+        })
+        .catch(err => {
+          console.error('Error al subir producto:', err);
+        });
     });
-    document.getElementById('upload-section')?.setAttribute('style', 'display:block;');
-    document.getElementById('user-session')?.setAttribute('style', 'display:flex;');
-  } else {
-    document.getElementById('upload-section')?.setAttribute('style', 'display:none;');
-    document.getElementById('user-session')?.setAttribute('style', 'display:none;');
   }
-}
+});
+
 
 // =============================
-// 📦 Cargar y mostrar productos
+// 📦 Cargar y mostrar productos (solo en productos.html y editar.html)
 // =============================
-fetch('http://localhost:3001/api/products')
-  .then(response => response.json())
-  .then(products => {
-    todosLosProductos = products;
-    mostrarProductos(products);
-  })
-  .catch(error => {
-    console.error('Error cargando productos:', error);
-  });
+document.addEventListener('DOMContentLoaded', () => {
+  const path = window.location.pathname;
+  if (path.includes('productos.html') || path.includes('editar.html')) {
+    fetch('http://localhost:3001/api/products')
+      .then(response => response.json())
+      .then(products => {
+        todosLosProductos = products;
+        mostrarProductos(products);
+      })
+      .catch(error => {
+        console.error('Error cargando productos:', error);
+      });
+  }
+});
 
 function mostrarProductos(lista) {
   const container = document.getElementById('product-container');
+  if (!container) return;
   container.innerHTML = '';
 
   lista.forEach(product => {
@@ -164,7 +175,7 @@ function mostrarProductos(lista) {
       <div class="botones">
         <button onclick='verDetalles(${JSON.stringify(product)})'>Ver más</button>
         <button onclick="agregarAlCarrito(${product.id})">Agregar al carrito</button>
-        ${currentUser ? `
+        ${currentUser && window.location.pathname.includes('editar.html') ? `
           <button onclick="editarProducto(${product.id})">Editar</button>
           <button onclick="eliminarProducto(${product.id})">Eliminar</button>
         ` : ''}
@@ -186,36 +197,9 @@ function verDetalles(product) {
   modal.style.display = 'block';
 }
 
-document.getElementById('close-modal').addEventListener('click', () => {
+document.getElementById('close-modal')?.addEventListener('click', () => {
   document.getElementById('product-modal').style.display = 'none';
 });
-
-// =============================
-// ✍️ Publicar nuevo producto
-// =============================
-if (currentUser) {
-  document.getElementById('product-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const titulo = document.getElementById('title').value;
-    const precio = parseFloat(document.getElementById('price').value);
-    const imagen = document.getElementById('image').value;
-    const descripcion = document.getElementById('description').value;
-
-    fetch('http://localhost:3001/api/products', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ titulo, precio, imagen, descripcion })
-    })
-      .then(res => res.json())
-      .then(data => {
-        alert('Producto agregado con éxito');
-        location.reload();
-      })
-      .catch(err => {
-        console.error('Error al subir producto:', err);
-      });
-  });
-}
 
 // =============================
 // ✂️ Editar y eliminar productos
@@ -364,87 +348,11 @@ function realizarCompra() {
       alert('✅ Compra registrada con éxito');
       localStorage.removeItem('carrito');
       mostrarCarrito();
-      cargarHistorial();
     })
     .catch(err => {
       console.error('Error al registrar compra:', err);
       alert('No se pudo registrar la compra');
     });
-}
-
-// =============================
-// 🔍 Filtros y búsqueda
-// =============================
-function aplicarFiltros() {
-  const texto = document.getElementById('buscador').value.toLowerCase();
-  const precioMin = parseFloat(document.getElementById('precio-min').value) || 0;
-  const precioMax = parseFloat(document.getElementById('precio-max').value) || Infinity;
-
-  const resultado = todosLosProductos.filter(p =>
-    p.titulo.toLowerCase().includes(texto) &&
-    p.precio >= precioMin &&
-    p.precio <= precioMax
-  );
-
-  mostrarProductos(resultado);
-}
-
-document.getElementById('buscador').addEventListener('input', aplicarFiltros);
-document.getElementById('filtrar-precio').addEventListener('click', aplicarFiltros);
-
-// =============================
-// 🧾 Historial de compras
-// =============================
-function cargarHistorial() {
-  if (!currentUser) return;
-
-  fetch(`http://localhost:3001/api/orders/usuario/${currentUser.userId}`)
-    .then(res => res.json())
-    .then(compras => {
-      const contenedor = document.getElementById('historial-lista');
-      if (!contenedor) return;
-
-      if (!compras.length) {
-        contenedor.innerHTML = '<p>No hay compras registradas.</p>';
-        return;
-      }
-
-      contenedor.innerHTML = compras.map(compra => {
-        const fecha = new Date(compra.fecha).toLocaleString();
-        const productosHTML = compra.productos.map(p => `
-          <li>${p.titulo} (x${p.cantidad}) - $${p.precio_unitario}</li>
-        `).join('');
-
-        return `
-          <div style="margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
-            <p><strong>🧾 Fecha:</strong> ${fecha}</p>
-            <ul>${productosHTML}</ul>
-            <p><strong>Total:</strong> $${compra.total}</p>
-          </div>
-        `;
-      }).join('');
-    })
-    .catch(err => {
-      console.error('Error cargando historial:', err);
-      const contenedor = document.getElementById('historial-lista');
-      if (contenedor) contenedor.innerHTML = '<p>Error al cargar el historial.</p>';
-    });
-}
-
-const historialBtn = document.getElementById('toggle-historial-btn');
-const historialContenedor = document.getElementById('historial-contenedor');
-
-if (historialBtn && historialContenedor) {
-  historialBtn.addEventListener('click', () => {
-    if (historialContenedor.style.display === 'none') {
-      historialContenedor.style.display = 'block';
-      historialBtn.textContent = '❌ Ocultar historial';
-      cargarHistorial();
-    } else {
-      historialContenedor.style.display = 'none';
-      historialBtn.textContent = '🧾 Ver historial de compras';
-    }
-  });
 }
 
 // =============================
@@ -468,21 +376,13 @@ function cerrarPerfil() {
   document.getElementById("perfil-modal").style.display = "none";
 }
 
-function agregarAFavoritos(producto) {
-  let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-  const yaExiste = favoritos.some(p => p.id === producto.id);
-  if (yaExiste) return alert('Ya está en tus favoritos');
-  favoritos.push(producto);
-  localStorage.setItem('favoritos', JSON.stringify(favoritos));
-  alert(`"${producto.titulo}" agregado a favoritos`);
-}
+// Detectar el hash al cargar la página para mostrar login o registro automáticamente
+document.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash;
 
-
-// Cerrar modales si se hace clic afuera
-window.addEventListener("click", function (e) {
-  const modalFav = document.getElementById("favoritos-modal");
-  if (e.target === modalFav) modalFav.style.display = "none";
-
-  const modalPerfil = document.getElementById("perfil-modal");
-  if (e.target === modalPerfil) modalPerfil.style.display = "none";
+  if (hash === '#form-registra') {
+    mostrarRegistro();
+  } else if (hash === '#form-login') {
+    mostrarLogin();
+  }
 });
